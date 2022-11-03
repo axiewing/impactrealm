@@ -1,4 +1,7 @@
-<?= include('top.php');
+<?php 
+$dashboard_page = true;
+$side_nav = true;
+include('top.php');
 ?>
             <!-- Sale & Revenue Start -->
             <div class="container-fluid pt-4 px-4">
@@ -264,5 +267,5 @@
                 </div>
             </div>
             <!-- Widgets End -->
-            <?= include('bottom.php');
+            <?php include('bottom.php');
 ?>
