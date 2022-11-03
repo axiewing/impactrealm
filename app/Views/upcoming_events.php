@@ -3,7 +3,9 @@ $upcoming_page = true;
 $side_nav = true;
 include('top.php');
 ?>
-            <h3>UPcoming events</h3>
+<div class="p-3">
+            <h3>Events to attend</h3>
             <p>Coming soon</p>
+        </div>
             <?php include('bottom.php');
 ?>
