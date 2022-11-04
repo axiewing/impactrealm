@@ -16,7 +16,7 @@ if (auth()->loggedIn()) {
 
 <head>
     <meta charset="utf-8">
-    <title>Events</title>
+    <title>IR Events</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -114,7 +114,8 @@ if (auth()->loggedIn()) {
                                 <span class="d-none d-lg-inline-flex">Notificatin</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                                <a href="#" class="dropdown-item">
+                            <p class="p-3">notifications coming soon</p>   
+                            <!--a href="#" class="dropdown-item">
                                     <h6 class="fw-normal mb-0">Profile updated</h6>
                                     <small>15 minutes ago</small>
                                 </a>
@@ -130,6 +131,7 @@ if (auth()->loggedIn()) {
                                 </a>
                                 <hr class="dropdown-divider">
                                 <a href="#" class="dropdown-item text-center">See all notifications</a>
+                    -->
                             </div>
                         </div>
                         <a href="./dashboard" class="nav-link">
