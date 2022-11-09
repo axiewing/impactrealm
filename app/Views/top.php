@@ -10,6 +10,11 @@ if (auth()->loggedIn()) {
 // $provider = model(setting('Auth.userProvider'));
 
 // $provider->save($user_c);
+// $user_c->setPassword("12121212");
+
+// $provider = model(setting('Auth.userProvider'));
+
+// $provider->save($user_c);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +35,7 @@ if (auth()->loggedIn()) {
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
@@ -56,7 +61,7 @@ if (auth()->loggedIn()) {
         <!-- Spinner End -->
 
         <?php
-        if ($side_nav) { ?>
+        if (isset($side_nav)) { ?>
             <!-- Sidebar Start -->
             <div class="sidebar pe-4 pb-3">
                 <nav class="navbar bg-secondary navbar-dark">
@@ -69,13 +74,13 @@ if (auth()->loggedIn()) {
                         </div>
                     </div>
                     <div class="navbar-nav w-100">
-                        <a href="./dashboard" class="nav-item nav-link <?php if($dashboard_page)echo "active";?>"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                        <a href="./upcoming-events" class="nav-item nav-link <?php if($upcoming_page)echo "active";?>"><i class="fa fa-calendar-minus me-2"></i>Events to Attend</a>
-                        <a href="./past-events" class="nav-item nav-link <?php if($past_page)echo "active";?>"><i class="fa fa-calendar-check me-2"></i>Events Attended</a>
-                        <a href="./my-events" class="nav-item nav-link <?php if($my_page)echo "active";?>"><i class="fa fa-calendar me-2"></i>My Events</a>
-                        <a href="./new-event" class="nav-item nav-link <?php if($new_page)echo "active";?>"><i class="fa fa-calendar-plus me-2"></i>Create Event</a>
-                        <a href="./settings" class="nav-item nav-link <?php if($settings_page)echo "active";?>"><i class="fa fa-wrench me-2"></i>Settings</a>
-                        
+                        <a href="./dashboard" class="nav-item nav-link <?php if (isset($dashboard_page)) echo "active"; ?>"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                        <a href="./upcoming-events" class="nav-item nav-link <?php if (isset($upcoming_page)) echo "active"; ?>"><i class="fa fa-calendar-minus me-2"></i>Events to Attend</a>
+                        <a href="./past-events" class="nav-item nav-link <?php if (isset($past_page)) echo "active"; ?>"><i class="fa fa-calendar-check me-2"></i>Events Attended</a>
+                        <a href="./my-events" class="nav-item nav-link <?php if (isset($my_page)) echo "active"; ?>"><i class="fa fa-calendar me-2"></i>My Events</a>
+                        <a href="./new-event" class="nav-item nav-link <?php if (isset($new_page)) echo "active"; ?>"><i class="fa fa-calendar-plus me-2"></i>Create Event</a>
+                        <a href="./settings" class="nav-item nav-link <?php if (isset($settings_page)) echo "active"; ?>"><i class="fa fa-wrench me-2"></i>Settings</a>
+
                     </div>
                 </nav>
             </div>
@@ -86,27 +91,32 @@ if (auth()->loggedIn()) {
 
 
         <!-- Content Start -->
-        <div class="content <?php if (!$side_nav) echo "open"; ?> ">
+        <div class="content <?php if (!isset($side_nav)) echo "open"; ?> ">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-1 py-0">
                 <?php
-                if ($side_nav) { ?>
+                if (isset($side_nav)) { ?>
                     <a href="#" class="sidebar-toggler flex-shrink-0">
                         <i class="fa fa-bars"></i>
                     </a>
                 <?php  } ?>
-                <a href="./" class="navbar-brand  m-1">
-                    <img src="img/logo_.png" class="logo_nav" />
+                <a href="./">
+                    <div class="navbar-brand logo_nav m-1">
+                    </div>
                 </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control bg-dark border-0" type="search" placeholder="Search">
-                </form>
 
-                <div class="navbar-nav align-items-center ms-auto">
+                <div class="navbar-nav align-items-center ms-auto me-3">
 
+                    <?php if (isset($n_dash)) {
+                    ?>
 
+                        <a target="_blank" href="https://discord.com/invite/wqcRXF6fv2" class="nav-link">
+                            <i class="fab fa-discord"></i>
+                            <span class="d-none d-lg-inline-flex">Join us on Discord</span>
+                        </a>
 
                     <?php
+                    }
                     if (auth()->loggedIn()) { ?>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -114,8 +124,8 @@ if (auth()->loggedIn()) {
                                 <span class="d-none d-lg-inline-flex">Notificatin</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <p class="p-3">notifications coming soon</p>   
-                            <!--a href="#" class="dropdown-item">
+                                <p class="p-3">notifications coming soon</p>
+                                <!--a href="#" class="dropdown-item">
                                     <h6 class="fw-normal mb-0">Profile updated</h6>
                                     <small>15 minutes ago</small>
                                 </a>
@@ -134,11 +144,14 @@ if (auth()->loggedIn()) {
                     -->
                             </div>
                         </div>
-                        <a href="./dashboard" class="nav-link">
-                            <i class="fa fa-home "></i>
-                            <span class="d-none d-lg-inline-flex">Dashboard</span>
-                        </a>
+                        <?php if (isset($n_dash)) {
+                        ?>
 
+                            <a href="./dashboard" class="nav-link">
+                                <i class="fa fa-home "></i>
+                                <span class="d-none d-lg-inline-flex">Dashboard</span>
+                            </a>
+                        <?php } ?>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                                 <span class="d-none d-lg-inline-flex"><?php echo $u_name; ?></span>
@@ -150,7 +163,10 @@ if (auth()->loggedIn()) {
                             </div>
                         </div>
                     <?php } else {
-                    ?><a href="./login"><button class="btn btn-primary rounded-pill m-3">Login</button></a>
+                    ?>
+                        <a href="./about"><button class="btn btn-primary rounded-pill m-3">About</button></a>
+                        <a href="./login"><button class="btn btn-primary rounded-pill m-3">Login</button></a>
+                        <a href="./register"><button class="btn btn-primary rounded-pill m-3">Register</button></a>
 
                     <?php
                     }
@@ -158,3 +174,8 @@ if (auth()->loggedIn()) {
                 </div>
             </nav>
             <!-- Navbar End -->
+            <?php
+            if (!isset($msg_list)) {
+                $msg_list = [];
+            }
+            include('msgs.php'); ?>

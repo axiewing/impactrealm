@@ -1,6 +1,5 @@
 <?php
-$settings_page = true;
-$side_nav = true;
+$n_dash = true;
 include('top.php');
 ?>
 

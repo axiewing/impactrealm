@@ -33,22 +33,25 @@ $routes->set404Override();
  * --------------------------------------------------------------------
  */
 
+
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('/about', 'Home::about');
 if (auth()->loggedIn()) {
     $routes->get('/dashboard', 'Home::dashboard');
     $routes->get('/upcoming-events', 'Home::upcoming_events');
     $routes->get('/past-events', 'Home::past_events');
     $routes->get('/my-events', 'Home::my_events');
     $routes->get('/new-event', 'Home::new_event');
+    $routes->post('/new-event', 'Home::add_new_event');
     $routes->get('/settings', 'Home::settings');
 }else{
     $routes->get('/dashboard', 'Home::index');
     $routes->get('/upcoming-events', 'Home::index');
     $routes->get('/past-events', 'Home::index');
     $routes->get('/my-events', 'Home::index');
-    $routes->get('/new-event', 'Home::index');
+    $routes->get('/new-event',function(){return view(setting('Auth.views')['login']);});
     $routes->get('/settings', 'Home::index');
 }
 

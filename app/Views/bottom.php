@@ -2,8 +2,22 @@
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary rounded-top p-4">
         <div class="row">
-            <div class="col-12 col-sm-6 text-center text-sm-start">
+            <div class="col-12 text-center">
+                <a target="_blank" href="https://discord.com/invite/wqcRXF6fv2" class="p-2 my-3">
+                    <i class="fab fa-discord fa-2x"></i>
+                    <span class="d-none d-lg-inline-flex">Discord</span>
+                </a>
+                <a target="_blank" href="mailto:ir" class="p-2 my-3">
+                    <i class="fa fa-at fa-2x"></i>
+                    <span class="d-none d-lg-inline-flex">E-mail</span>
+                </a>
+                <a target="_blank" href="https://twitter.com/ir" class="p-2 my-3">
+                    <i class="fab fa-twitter fa-2x"></i>
+                    <span class="d-none d-lg-inline-flex">Twitter</span>
+                </a>
+            <div class="col-12 pt-4 text-center">
                 &copy; <a href="#">IR Events</a>, All Right Reserved.
+            </div>
             </div>
 
         </div>

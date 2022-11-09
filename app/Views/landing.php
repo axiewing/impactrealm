@@ -1,64 +1,33 @@
 <?php
+use App\Models\Event_model;
 
-use Predis\Command\Redis\APPEND;
 
+$e_model = new Event_model();
+$events = $e_model->get_ten_events();
+$n_dash = true;
+//echo json_encode($evs);
 include('top.php');
-include('crousal.php');
-?>
 
+?>
+<div class="row align-items-center landing_banner" >
+<h2 class="ps-5 col-12">Discover, Create and Manage Web3 Gaming Events.</h2>
+</div>
+<div class="row ">
+    <div class="text-center">
+    <a href="./new-event"><button class="btn btn-primary m-4 p-3">Create an Event</button></a>
+    </div>
+</div>
 
 <?php
-$events = array();
-array_push($events,
-(object)[
-    'title'=>'Bitcoin event to dicuss the future',
-    'time' => 'Fri, Dec 2, 9:30 PM',
-    'cost' => 'Free',
-    'address'=>'Harverd university, main block auditorium',
-    'img_name' => 'imge1.jpg'
-],
-(object)[
-    'title'=>'Bitcoin event to dicuss the future',
-    'time' => 'Fri, Dec 2, 9:30 PM',
-    'cost' => 'Free',
-    'address'=>'Harverd university, main block auditorium',
-    'img_name' => 'imge2.jpg'
-],
-(object)[
-    'title'=>'Bitcoin event to dicuss the future',
-    'time' => 'Fri, Dec 2, 9:30 PM',
-    'cost' => 'Free',
-    'address'=>'Harverd university, main block auditorium',
-    'img_name' => 'imge3.jpg'
-],
-(object)[
-    'title'=>'Bitcoin event to dicuss the future',
-    'time' => 'Fri, Dec 2, 9:30 PM',
-    'cost' => 'Free',
-    'address'=>'Harverd university, main block auditorium',
-    'img_name' => 'imge4.jpg'
-],
-(object)[
-    'title'=>'Bitcoin event to dicuss the future',
-    'time' => 'Fri, Dec 2, 9:30 PM',
-    'cost' => 'Free',
-    'address'=>'Harverd university, main block auditorium',
-    'img_name' => 'imge5.jpg'
-]
-);
 $events_obj = (object)[
-    "title" => "Latest Events",
+    "title" => "Popular Events Among Gamers",
     "events" => $events
 ];
 
-include ('event_listing.php');
-array_pop($events);
-$events_obj = (object)[
-    "title" => "Popular Events",
-    "events" => $events
-];
-
-include ('event_listing.php');
+include('includes/event_listing.php');
+include('includes/divider.php');
+include('includes/how_section.php');
+include('includes/divider.php');
 
 include('bottom.php');
 
