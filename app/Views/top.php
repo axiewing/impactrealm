@@ -101,7 +101,8 @@ if (auth()->loggedIn()) {
                     </a>
                 <?php  } ?>
                 <a href="./">
-                    <div class="navbar-brand logo_nav m-1">
+                    <div class="navbar-brand  m-1">
+                        <img id="top_logo" class="logo_nav" src="img/logo_.png" />
                     </div>
                 </a>
 
@@ -110,7 +111,7 @@ if (auth()->loggedIn()) {
                     <?php if (isset($n_dash)) {
                     ?>
 
-                        <a target="_blank" href="https://discord.com/invite/wqcRXF6fv2" class="nav-link">
+                        <a target="_blank" href="https://discord.com/invite/WtGSYgMcgu" class="nav-link">
                             <i class="fab fa-discord"></i>
                             <span class="d-none d-lg-inline-flex">Join us on Discord</span>
                         </a>

@@ -3,15 +3,15 @@
     <div class="bg-secondary rounded-top p-4">
         <div class="row">
             <div class="col-12 text-center">
-                <a target="_blank" href="https://discord.com/invite/wqcRXF6fv2" class="p-2 my-3">
+                <a target="_blank" href="https://discord.com/invite/WtGSYgMcgu" class="p-2 my-3">
                     <i class="fab fa-discord fa-2x"></i>
                     <span class="d-none d-lg-inline-flex">Discord</span>
                 </a>
-                <a target="_blank" href="mailto:ir" class="p-2 my-3">
+                <a target="_blank" href="mailto:hello@impactrealm.io" class="p-2 my-3">
                     <i class="fa fa-at fa-2x"></i>
                     <span class="d-none d-lg-inline-flex">E-mail</span>
                 </a>
-                <a target="_blank" href="https://twitter.com/ir" class="p-2 my-3">
+                <a target="_blank" href="https://twitter.com/impactrealm" class="p-2 my-3">
                     <i class="fab fa-twitter fa-2x"></i>
                     <span class="d-none d-lg-inline-flex">Twitter</span>
                 </a>

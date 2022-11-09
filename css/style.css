@@ -293,25 +293,22 @@
 }
 
 .logo_nav {
-    background-image: url(../img/logo_s.png);
     height: 67px;
     width: 67px;
-    background-size: cover;
+    object-fit: cover;
 }
 
 @media screen and (min-width: 600px) {
     .logo_nav {
-        background-image: url(../img/logo_.png);
         height: 67px;
         width: 220px;
-        background-size: cover;
+        object-fit: cover;
     }
 }
 
 .landing_banner {
     height: 60vh;
-    background-image: url(../img/gaming.webp);
-    background-size: cover;
+    object-fit: cover;
 }
 
 .minhi2 {

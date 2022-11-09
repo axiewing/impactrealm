@@ -10,8 +10,8 @@
         }, 1);
     };
     spinner();
-    
-    
+
+
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
@@ -21,7 +21,7 @@
         }
     });
     $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        $('html, body').animate({ scrollTop: 0 }, 1500, 'easeInOutExpo');
         return false;
     });
 
@@ -38,7 +38,7 @@
         $('.progress .progress-bar').each(function () {
             $(this).css("width", $(this).attr("aria-valuenow") + '%');
         });
-    }, {offset: '80%'});
+    }, { offset: '80%' });
 
 
     // Calender
@@ -55,17 +55,25 @@
         items: 1,
         dots: true,
         loop: true,
-        nav : false
+        nav: false
+    });
+
+    function mediaFunction(x) {
+        if (x.matches) { // If media query matches
+            document.getElementById('top_logo').src = "img/logo_s.png";
+        } else {
+            document.getElementById('top_logo').src = "img/logo_.png";
+        }
+    }
+
+
+    var qur = window.matchMedia("(max-width: 600px)");
+    mediaFunction(qur)
+    $(window).resize(function () {
+        var medq = window.matchMedia("(max-width: 600px)");
+        mediaFunction(medq)
     });
 
 
-    // Chart Global Color
-    Chart.defaults.color = "#6C7293";
-    Chart.defaults.borderColor = "#000000";
-
-
-
-
-    
 })(jQuery);
 

@@ -8,8 +8,9 @@ $n_dash = true;
 include('top.php');
 
 ?>
-<div class="row align-items-center landing_banner" >
-<h2 class="ps-5 col-12">Discover, Create and Manage Web3 Gaming Events.</h2>
+<div class="row align-items-center " >
+    <img class="landing_banner" src="img/gaming.webp" />
+<h2 style="position: absolute;" class="ps-5 col-12">Discover, Create and Manage Web3 Gaming Events.</h2>
 </div>
 <div class="row ">
     <div class="text-center">
