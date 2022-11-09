@@ -53,7 +53,7 @@ class Home extends BaseController
 
                             try {
                                 $rand_name = $this->str_rand(7). "." . $extension;
-                                $path_filename_ext =  FCPATH . "\\event_imgs\\" . $rand_name ;
+                                $path_filename_ext =  FCPATH . "event_imgs" .DIRECTORY_SEPARATOR. $rand_name ;
                                 $z = move_uploaded_file($_FILES['banner']['tmp_name'], $path_filename_ext);
                                 $e_model = new Event_model();
                                 $e_data = [

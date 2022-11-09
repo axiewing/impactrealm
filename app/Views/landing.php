@@ -1,7 +1,6 @@
 <?php
 use App\Models\Event_model;
 
-
 $e_model = new Event_model();
 $events = $e_model->get_ten_events();
 $n_dash = true;
