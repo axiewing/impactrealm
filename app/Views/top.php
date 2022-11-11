@@ -39,14 +39,12 @@ if (auth()->loggedIn()) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>/css/style.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
 </head>
 
@@ -74,12 +72,12 @@ if (auth()->loggedIn()) {
                         </div>
                     </div>
                     <div class="navbar-nav w-100">
-                        <a href="./dashboard" class="nav-item nav-link <?php if (isset($dashboard_page)) echo "active"; ?>"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                        <a href="./upcoming-events" class="nav-item nav-link <?php if (isset($upcoming_page)) echo "active"; ?>"><i class="fa fa-calendar-minus me-2"></i>Events to Attend</a>
-                        <a href="./past-events" class="nav-item nav-link <?php if (isset($past_page)) echo "active"; ?>"><i class="fa fa-calendar-check me-2"></i>Events Attended</a>
-                        <a href="./my-events" class="nav-item nav-link <?php if (isset($my_page)) echo "active"; ?>"><i class="fa fa-calendar me-2"></i>My Events</a>
-                        <a href="./new-event" class="nav-item nav-link <?php if (isset($new_page)) echo "active"; ?>"><i class="fa fa-calendar-plus me-2"></i>Create Event</a>
-                        <a href="./settings" class="nav-item nav-link <?php if (isset($settings_page)) echo "active"; ?>"><i class="fa fa-wrench me-2"></i>Settings</a>
+                        <a href="<?php echo base_url();?>/dashboard" class="nav-item nav-link <?php if (isset($dashboard_page)) echo "active"; ?>"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                        <a href="<?php echo base_url();?>/upcoming-events" class="nav-item nav-link <?php if (isset($upcoming_page)) echo "active"; ?>"><i class="fa fa-calendar-minus me-2"></i>Events to Attend</a>
+                        <a href="<?php echo base_url();?>/past-events" class="nav-item nav-link <?php if (isset($past_page)) echo "active"; ?>"><i class="fa fa-calendar-check me-2"></i>Events Attended</a>
+                        <a href="<?php echo base_url();?>/my-events" class="nav-item nav-link <?php if (isset($my_page)) echo "active"; ?>"><i class="fa fa-calendar me-2"></i>My Events</a>
+                        <a href="<?php echo base_url();?>/new-event" class="nav-item nav-link <?php if (isset($new_page)) echo "active"; ?>"><i class="fa fa-calendar-plus me-2"></i>Create Event</a>
+                        <a href="<?php echo base_url();?>/settings" class="nav-item nav-link <?php if (isset($settings_page)) echo "active"; ?>"><i class="fa fa-wrench me-2"></i>Settings</a>
 
                     </div>
                 </nav>
@@ -100,7 +98,7 @@ if (auth()->loggedIn()) {
                         <i class="fa fa-bars"></i>
                     </a>
                 <?php  } ?>
-                <a href="./">
+                <a href="<?php echo base_url();?>/">
                     <div class="navbar-brand  m-1">
                         <img id="top_logo" class="logo_nav" src="img/logo_.png" />
                     </div>
@@ -148,7 +146,7 @@ if (auth()->loggedIn()) {
                         <?php if (isset($n_dash)) {
                         ?>
 
-                            <a href="./dashboard" class="nav-link">
+                            <a href="<?php echo base_url();?>/dashboard" class="nav-link">
                                 <i class="fa fa-home "></i>
                                 <span class="d-none d-lg-inline-flex">Dashboard</span>
                             </a>
@@ -160,14 +158,14 @@ if (auth()->loggedIn()) {
                             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                                 <a href="#" class="dropdown-item">My Profile</a>
                                 <a href="#" class="dropdown-item">Settings</a>
-                                <a href="./logout" class="dropdown-item">Log Out</a>
+                                <a href="<?php echo base_url();?>/logout" class="dropdown-item">Log Out</a>
                             </div>
                         </div>
                     <?php } else {
                     ?>
-                        <a href="./about"><button class="btn btn-primary rounded-pill m-3">About</button></a>
-                        <a href="./login"><button class="btn btn-primary rounded-pill m-3">Login</button></a>
-                        <a href="./register"><button class="btn btn-primary rounded-pill m-3">Register</button></a>
+                        <a href="<?php echo base_url();?>/about"><button class="btn btn-primary rounded-pill m-3">About</button></a>
+                        <a href="<?php echo base_url();?>/login"><button class="btn btn-primary rounded-pill m-3">Login</button></a>
+                        <a href="<?php echo base_url();?>/register"><button class="btn btn-primary rounded-pill m-3">Register</button></a>
 
                     <?php
                     }

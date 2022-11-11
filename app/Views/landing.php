@@ -14,7 +14,7 @@ include('top.php');
 </div>
 <div class="row ">
     <div class="text-center">
-    <a href="./new-event"><button class="btn btn-primary m-4 p-3">Create an Event</button></a>
+    <a href="<?php echo base_url();?>/new-event"><button class="btn btn-primary m-4 p-3">Create an Event</button></a>
     </div>
 </div>
 

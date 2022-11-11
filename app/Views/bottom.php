@@ -42,7 +42,7 @@
 <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
 <!-- Template Javascript -->
-<script src="js/main.js"></script>
+<script src="<?php echo base_url();?>/js/main.js"></script>
 </body>
 
 </html>

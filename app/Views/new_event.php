@@ -41,5 +41,9 @@ include('top.php');
         </div>
     </div>
 </div>
+
 <?php include('bottom.php');
 ?>
+<script>
+    new tempusDominus.TempusDominus(document.getElementById('example'), {});
+</script>

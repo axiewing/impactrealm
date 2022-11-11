@@ -25,6 +25,11 @@
                              echo date_format($date,"D M-d h:i a");?></p>
                             <p class="mb-0 text-info"><?php echo $event["content"]; ?></p>
                             <p class="my-2"><?php echo $event["address"]; ?></p>
+                        <?php if (isset($delete_btn)) {
+                            ?>
+                            <a onclick="return confirm('You are about to Delete an Event!!!')" href="<?php echo base_url();?>/del-event/<?php echo $event["id"]; ?>" ><button class="btn btn-danger m-1 p-1">Delete</button></a>
+                            <?php
+                            }?>
                         </div>
                     </div>
                 </div>

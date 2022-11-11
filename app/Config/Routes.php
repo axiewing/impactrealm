@@ -46,6 +46,7 @@ if (auth()->loggedIn()) {
     $routes->get('/new-event', 'Home::new_event');
     $routes->post('/new-event', 'Home::add_new_event');
     $routes->get('/settings', 'Home::settings');
+    $routes->get('/del-event/(:num)', 'Event::delete_event/$1');
 }else{
     $routes->get('/dashboard', 'Home::index');
     $routes->get('/upcoming-events', 'Home::index');

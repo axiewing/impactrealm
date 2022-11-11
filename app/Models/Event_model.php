@@ -36,6 +36,16 @@ class Event_model extends Model
         $query = $this->findAll(10,$offset);
         return $query;
     }
+    public function my_events($offset = 0)
+    {
+        $query = $this->where('created_by', auth()->user()->id)->findAll(10,$offset);
+        return $query;
+    }
+    public function del_event($id)
+    {
+        $query = $this->where('id', $id)->where('created_by', auth()->user()->id)->delete();
+        return $query;
+    }
 
     public function insert_event($data)
     {
