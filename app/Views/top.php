@@ -45,6 +45,7 @@ if (auth()->loggedIn()) {
     <link href="<?php echo base_url();?>/css/style.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 </head>
 

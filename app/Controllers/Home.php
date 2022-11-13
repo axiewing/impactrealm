@@ -98,10 +98,6 @@ class Home extends BaseController
 
         return view('new_event');
     }
-    public function settings()
-    {
-        return view('settings');
-    }
     public function about()
     {
         return view('about');

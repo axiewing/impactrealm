@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
-
+use DateTime;
 
 class Event_model extends Model
 {
@@ -33,12 +33,77 @@ class Event_model extends Model
 
     public function get_ten_events($offset = 0)
     {
-        $query = $this->findAll(10,$offset);
-        return $query;
+        $now = date_format(new DateTime(), 'Y-m-d H:i:s');
+        if (auth()->loggedIn()) {
+            $query = $this->select('*, (SELECT COUNT(*) 
+            FROM user_event WHERE event_id = id
+            and user_id = ' . auth()->user()->id . ') as e_count')->where('event_date >=', $now)->orderBy('event.id', 'desc');
+        } else {
+
+            $query = $this->where('event_date >=', $now)->orderBy('event.id', 'desc');
+        }
+
+        //echo $query->countAllResults(); 
+        return $query->findAll(10, $offset);
+    }
+
+    public function get_all_events()
+    {
+        $now = date_format(new DateTime(), 'Y-m-d H:i:s');
+        if (auth()->loggedIn()) {
+            $query = $this->select('*, (SELECT COUNT(*) 
+            FROM user_event WHERE event_id = id
+            and user_id = ' . auth()->user()->id . ') as e_count')->where('event_date >=', $now)->orderBy('event.id', 'desc');
+        } else {
+
+            $query = $this->where('event_date >=', $now)->orderBy('event.id', 'desc');
+        }
+
+        //echo $query->countAllResults(); 
+        return $query->findAll();
+    }
+
+    public function add_follower($id)
+    {
+        $this->set('follow_count', 'follow_count + 1', false)->where('id',$id)->update();
+    }
+    public function remove_follower($id)
+    {
+        $this->set('follow_count', 'follow_count - 1', false)->where('id',$id)->update();
+    }
+
+    public function get_attended_events()
+    {
+        $now = date_format(new DateTime(), 'Y-m-d H:i:s');
+        $query = $this->select('*')
+            ->where('event_date <=', $now)
+            ->where('(SELECT COUNT(*) 
+            FROM user_event WHERE event_id = id
+            and user_id = ' . auth()->user()->id . ') >= 1')
+            ->orderBy('event.id', 'desc');
+            
+        //echo $query->countAllResults(); 
+        return $query->findAll();
+    }
+
+    public function get_attending_events()
+    {
+        $now = date_format(new DateTime(), 'Y-m-d H:i:s');
+        $query = $this->select('*, (SELECT COUNT(*) 
+        FROM user_event WHERE event_id = id
+        and user_id = ' . auth()->user()->id . ') as e_count')
+            ->where('event_date >=', $now)
+            ->where('(SELECT COUNT(*) 
+            FROM user_event WHERE event_id = id
+            and user_id = ' . auth()->user()->id . ') >= 1')
+            ->orderBy('event.id', 'desc');
+            
+        //echo $query->countAllResults(); 
+        return $query->findAll();
     }
     public function my_events($offset = 0)
     {
-        $query = $this->where('created_by', auth()->user()->id)->findAll(10,$offset);
+        $query = $this->where('created_by', auth()->user()->id)->findAll(10, $offset);
         return $query;
     }
     public function del_event($id)

@@ -38,6 +38,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/about', 'Home::about');
+$routes->get('/all-events', 'Event::all_events');
 if (auth()->loggedIn()) {
     $routes->get('/dashboard', 'Home::dashboard');
     $routes->get('/upcoming-events', 'Home::upcoming_events');
@@ -45,8 +46,11 @@ if (auth()->loggedIn()) {
     $routes->get('/my-events', 'Home::my_events');
     $routes->get('/new-event', 'Home::new_event');
     $routes->post('/new-event', 'Home::add_new_event');
-    $routes->get('/settings', 'Home::settings');
+    $routes->get('/settings', 'Setting::settings');
+    $routes->post('/settings', 'Setting::settings');
     $routes->get('/del-event/(:num)', 'Event::delete_event/$1');
+    $routes->get('/attend-event/(:num)', 'Event::attend_event/$1');
+    $routes->get('/unattend-event/(:num)', 'Event::unattend_event/$1');
 }else{
     $routes->get('/dashboard', 'Home::index');
     $routes->get('/upcoming-events', 'Home::index');

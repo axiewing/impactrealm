@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Event_model;
+use App\Models\User_Event_model;
 
 class Event extends BaseController
 {
@@ -20,5 +21,21 @@ class Event extends BaseController
             );
         }
         return redirect()->to('/my-events');
+    }
+
+    public function attend_event($id)
+    {
+        $ue_model = new User_Event_model();
+        return $ue_model->attend($id, auth()->user()->id);
+    }
+    public function unattend_event($id)
+    {
+        $ue_model = new User_Event_model();
+        return $ue_model->unattend($id, auth()->user()->id);
+    }
+
+    public function all_events()
+    {
+        return view('all_events');
     }
 }
