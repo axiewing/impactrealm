@@ -14,12 +14,16 @@
         foreach ($events_obj->events as $event) {
         ?>
             <div id='eview<?php echo $event["id"]; ?>'  class="col-sm-12 col-md-6 col-xl-4">
-                <div class="rounded border border-info">
+                <div class="e-box rounded border border-info">
                     <div class="text-center mt-2">
-                        <img class="img-fluid mx-auto mb-4" src="event_imgs/<?php echo $event["banner"]; ?>" style="width:auto;height: 200px;object-fit:contain;">
+                    <a href="<?php echo base_url().'/event/'.$event["id"]?>">
+                        <img class="img-fluid mx-auto mb-4" src="<?php echo base_url().'/event_imgs/'.$event["banner"]; ?>" style="width:auto;height: 200px;object-fit:contain;">
+                    </a>
                     </div>
                     <div class="px-3 py-1">
+                    <a href="<?php echo base_url();?>/event/<?php echo $event["id"]?>">
                         <h5 class="mb-1"><?php echo $event["title"]; ?></h5>
+                    </a>
                         <p class="mb-0 text-primary">
                             <?php
                             $date = date_create_from_format('Y-m-d H:i:s', $event["event_date"]);
@@ -66,6 +70,7 @@
 <!-- Widgets End -->
 <script>
     function attend_event(e_id) {
+                $("#attend" + e_id).attr('onclick', '');
         $.get("<?php echo base_url(); ?>/attend-event/" + e_id, function(data, status) {
             if (status == 'success') {
                 $("#attend" + e_id).attr('onclick', 'unattend_event(' + e_id + ')');
@@ -80,6 +85,7 @@
     }
 
     function unattend_event(e_id) {
+                $("#attend" + e_id).attr('onclick', '');
         $.get("<?php echo base_url(); ?>/unattend-event/" + e_id, function(data, status) {
             if (status == 'success') {
                 $("#attend" + e_id).attr('onclick', 'attend_event(' + e_id + ')');

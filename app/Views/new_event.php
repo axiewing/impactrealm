@@ -10,6 +10,7 @@ include('top.php');
         <div class="col-sm-12 col-xl-8">
             <div class="bg-secondary rounded h-100 p-4">
                 <form method="POST" enctype="multipart/form-data">
+                <?= csrf_field() ?>
                     <h6 class="mb-4">Create new Event</h6>
                     <div class="mb-3">
                         <label for="title">Event Title</label>

@@ -5,12 +5,12 @@ $n_dash = true;
 
 
 $e_model = new Event_model();
-$events = $e_model->get_all_events();
+$events = $e_model->get_user_events($user_id);
 $attend_btn = true;
 
 include('top.php');
 $events_obj = (object)[
-    "title" => "All Events",
+    "title" => "Event created by this user",
     "events" => $events
 ];
 ?><div class="row ">

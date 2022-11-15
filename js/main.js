@@ -33,14 +33,7 @@
     });
 
 
-    // Progress Bar
-    $('.pg-bar').waypoint(function () {
-        $('.progress .progress-bar').each(function () {
-            $(this).css("width", $(this).attr("aria-valuenow") + '%');
-        });
-    }, { offset: '80%' });
-
-
+    
     // Calender
     $('#calender').datetimepicker({
         inline: true,
@@ -60,9 +53,9 @@
 
     function mediaFunction(x) {
         if (x.matches) { // If media query matches
-            document.getElementById('top_logo').src = "img/logo_s.png";
+            document.getElementById('top_logo').src = base_url + "/img/logo_s.png";
         } else {
-            document.getElementById('top_logo').src = "img/logo_.png";
+            document.getElementById('top_logo').src = base_url + "/img/logo_.png";
         }
     }
 

@@ -25,9 +25,12 @@ if (auth()->loggedIn()) {
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    <script>
+        const base_url = "<?php echo base_url(); ?>";
+    </script>
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="<?php echo base_url();?>/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -101,7 +104,7 @@ if (auth()->loggedIn()) {
                 <?php  } ?>
                 <a href="<?php echo base_url();?>/">
                     <div class="navbar-brand  m-1">
-                        <img id="top_logo" class="logo_nav" src="img/logo_.png" />
+                        <img id="top_logo" class="logo_nav" src="<?php echo base_url();?>/img/logo_.png" />
                     </div>
                 </a>
 
@@ -111,8 +114,8 @@ if (auth()->loggedIn()) {
                     ?>
 
                         <a target="_blank" href="https://discord.com/invite/WtGSYgMcgu" class="nav-link">
-                            <i class="fab fa-discord"></i>
-                            <span class="d-none d-lg-inline-flex">Join us on Discord</span>
+                            
+                            <span class=" ">Join us on Discord</span>
                         </a>
 
                     <?php
@@ -120,8 +123,7 @@ if (auth()->loggedIn()) {
                     if (auth()->loggedIn()) { ?>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                                <i class="fa fa-bell "></i>
-                                <span class="d-none d-lg-inline-flex">Notificatin</span>
+                                <span class=" ">Notification</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                                 <p class="p-3">notifications coming soon</p>
@@ -147,18 +149,15 @@ if (auth()->loggedIn()) {
                         <?php if (isset($n_dash)) {
                         ?>
 
-                            <a href="<?php echo base_url();?>/dashboard" class="nav-link">
-                                <i class="fa fa-home "></i>
-                                <span class="d-none d-lg-inline-flex">Dashboard</span>
-                            </a>
+                            
                         <?php } ?>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                                <span class="d-none d-lg-inline-flex"><?php echo $u_name; ?></span>
+                                <span class=" "><?php echo $u_name; ?></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                                <a href="#" class="dropdown-item">My Profile</a>
-                                <a href="#" class="dropdown-item">Settings</a>
+                                <a href="<?php echo base_url();?>/dashboard" class="dropdown-item">My Profile</a>
+                                <a href="<?php echo base_url();?>/settings" class="dropdown-item">Settings</a>
                                 <a href="<?php echo base_url();?>/logout" class="dropdown-item">Log Out</a>
                             </div>
                         </div>

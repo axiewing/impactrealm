@@ -177,7 +177,7 @@
 }
 
 .content .navbar .navbar-nav .nav-link {
-    margin-left: 25px;
+    margin-left: 15px;
     padding: 12px 0;
     color: var(--light);
     outline: none;
@@ -317,4 +317,16 @@
 
 .minhi3 {
     min-height: 150px;
+}
+
+.e-box {
+    height: 435px;
+}
+.e-box h5 {
+    height: 27px;
+    overflow: hidden;
+}
+.e-box p {
+    height: 27px;
+    overflow: hidden;
 }
