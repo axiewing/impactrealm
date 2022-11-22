@@ -13,7 +13,7 @@
         }
         foreach ($events_obj->events as $event) {
         ?>
-            <div id='eview<?php echo $event["id"]; ?>'  class="col-sm-12 col-md-6 col-xl-4">
+            <div id='eview<?php echo $event["id"]; ?>'  class="col-sm-7 col-md-5 col-xl-3">
                 <div class="e-box rounded border border-info">
                     <div class="text-center mt-2">
                     <a href="<?php echo base_url().'/event/'.$event["id"]?>">

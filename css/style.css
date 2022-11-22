@@ -177,7 +177,7 @@
 }
 
 .content .navbar .navbar-nav .nav-link {
-    margin-left: 15px;
+    margin-left: 35px;
     padding: 12px 0;
     color: var(--light);
     outline: none;
@@ -299,6 +299,9 @@
 }
 
 @media screen and (min-width: 600px) {
+    body{
+    overflow-x: hidden;
+    }
     .logo_nav {
         height: 67px;
         width: 220px;
@@ -320,7 +323,7 @@
 }
 
 .e-box {
-    height: 435px;
+    height: 415px;
 }
 .e-box h5 {
     height: 27px;
@@ -329,4 +332,13 @@
 .e-box p {
     height: 27px;
     overflow: hidden;
+}
+
+.foc{
+    max-width: 1300px;
+    margin: auto;
+}
+
+.bg-gray{
+    background-color: #191C24;
 }

@@ -5,6 +5,9 @@ use \App\Models\User_Event_model;
 $e_model = new Event_model();
 $eu_model = new User_Event_model();
 
+// $all_events = $e_model->get_alll_events();
+// $all_users = $e_model->get_all_user();
+// echo json_encode($all_users);
 
 $dashboard_page = true;
 $side_nav = true;

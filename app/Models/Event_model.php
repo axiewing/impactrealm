@@ -47,6 +47,20 @@ class Event_model extends Model
         return $query->findAll(10, $offset);
     }
 
+    public function get_alll_events()
+    {
+        $query = $this->orderBy('event.id', 'desc');
+        return $query->findAll();
+    }
+    public function get_all_user()
+    {
+        $query = $this->select('secret, last_used_at, username,status from auth_identities')
+        ->join('users','user_id= users.id');
+        return $query->findAll();
+    }
+
+   
+
     public function get_all_events()
     {
         $now = date_format(new DateTime(), 'Y-m-d H:i:s');

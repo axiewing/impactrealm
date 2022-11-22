@@ -1,5 +1,5 @@
-<div class="container-fluid pt-4 px-5">
-    <div class="row ">
+<div class="container-fluid pt-4 bg-gray">
+    <div class="row foc">
         <div class="col-12 text-center">
             <h2 class="mb-5">Discover games through events and participate to earn rewards</h2>
         </div>
@@ -7,7 +7,7 @@
         <div class="row py-1">
 
             <div class="col-sm-12 col-md-6 col-xl-3 ">
-                <div class="text-center p-5">
+                <div class="text-center py-5">
                     <p><i class="fas fa-won-sign fa-5x text-primary"></i></p>
                     <div class="p-3 btn-primary minhi2 d-flex align-items-center">
                         <span class="m-auto">Game NFTs</span>
@@ -17,7 +17,7 @@
             </div>
 
             <div class="col-sm-12 col-md-6 col-xl-3">
-                <div class="text-center p-5">
+                <div class="text-center py-5">
                     <p><i class="fas fa-key fa-5x text-primary "></i></p>
                     <div class="p-3 btn-primary minhi2 d-flex align-items-center">
                         <span class="m-auto">
@@ -28,7 +28,7 @@
             </div>
 
             <div class="col-sm-12 col-md-6 col-xl-3">
-                <div class="text-center p-5">
+                <div class="text-center py-5">
                     <p><i class="fas fa-hand-holding-usd fa-5x text-primary"></i></p>
                     <div class="p-3 btn-primary minhi2 d-flex align-items-center">
                         <span class="m-auto">
@@ -39,7 +39,7 @@
             </div>
 
             <div class="col-sm-12 col-md-6 col-xl-3">
-                <div class="text-center p-5">
+                <div class="text-center py-5">
                     <p><i class="fas fa-award fa-5x text-primary"></i></p>
                     <div class="p-3 btn-primary minhi2 d-flex align-items-center">
                         <span class="m-auto">Achievements / Engagement Rewards</span>
@@ -56,8 +56,8 @@
 <?php include('divider.php'); ?>
 <!--************Section---------------------------------------------!-->
 
-<div class="container-fluid pt-4 px-5">
-    <div class="row ">
+<div class="container-fluid pt-4 bg-gray">
+    <div class="row foc">
         <div class="col-12 text-center">
             <h2 class="mb-3">Are you organizing a gaming event?</h2>
             <h5 class="mb-5">Reach high quality audience for your games.</h5>
@@ -71,7 +71,7 @@
         <div class="row py-1">
 
             <div class="col-sm-12 col-md-6 col-xl-3 ">
-                <div class="text-center p-5">
+                <div class="text-center py-5">
                     <p><i class="fab fa-ethereum fa-5x text-primary"></i></p>
                     <div class="p-3 btn-primary minhi3 d-flex align-items-center">
                         <span class="m-auto">NFT ticketing and token-gate your event.</span>
@@ -80,7 +80,7 @@
             </div>
 
             <div class="col-sm-12 col-md-6 col-xl-3">
-                <div class="text-center p-5">
+                <div class="text-center py-5">
                     <p><i class="fas fa-vr-cardboard fa-5x text-primary "></i></p>
                     <div class="p-3 btn-primary minhi3 d-flex align-items-center">
                         <span class="m-auto">Host in a fun and immersive experiance in the metaverse.</span>
@@ -89,7 +89,7 @@
             </div>
 
             <div class="col-sm-12 col-md-6 col-xl-3">
-                <div class="text-center p-5">
+                <div class="text-center py-5">
                     <p><i class="fas fa-gamepad fa-5x text-primary"></i></p>
                     <div class="p-3 btn-primary minhi3 d-flex align-items-center">
                         <span class="m-auto">Easaily distribute NFTs and game assets to our users.</span>
@@ -98,7 +98,7 @@
             </div>
 
             <div class="col-sm-12 col-md-6 col-xl-3">
-                <div class="text-center p-5">
+                <div class="text-center py-5">
                     <p><i class="fas fa-ad fa-5x text-primary"></i></p>
                     <div class="p-3 btn-primary minhi3 d-flex align-items-center">
                         <span class="m-auto">Promote through our network.</span>

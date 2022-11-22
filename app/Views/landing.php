@@ -11,33 +11,36 @@ $landing_page = true;
 include('top.php');
 
 ?>
-<div class="row align-items-center ">
-    <img class="landing_banner" src="img/gaming.webp" />
-    <h2 style="position: absolute;" class="ps-5 col-12">Discover, Create and Manage Web3 Gaming Events.</h2>
-</div>
-<div class="row ">
-    <div class="text-center">
-        <a href="<?php echo base_url(); ?>/new-event"><button class="btn btn-primary m-4 p-3">Create an Event</button></a>
+    <div class="row align-items-center ">
+        <img class="landing_banner" src="img/gaming.webp" />
+        <h2 style="position: absolute;" class="ps-5 col-12">Discover, Create and Manage Web3 Gaming Events.</h2>
     </div>
-</div>
+<div class="container-fluid p-0">
+    <div class="row ">
+        <div class="text-center">
+            <a href="<?php echo base_url(); ?>/new-event"><button class="btn btn-primary m-4 p-3">Create an Event</button></a>
+        </div>
+    </div>
 
-<div class="row ">
-    <div class="col-1"></div>
-    <div class=" col-10">
-        <?php
-        $events_obj = (object)[
-            "title" => "Popular Events Among Gamers",
-            "events" => $events
-        ];
+    <div class="row">
+        <div class="foc">
+            <?php
+            $events_obj = (object)[
+                "title" => "Popular Events Among Gamers",
+                "events" => $events
+            ];
 
-        include('includes/event_listing.php');
-        ?> </div>
+            include('includes/event_listing.php');
+            ?> </div>
+    </div>
+    <?php
+    include('includes/divider.php');
+    include('includes/how_section.php');
+    include('includes/divider.php');
+
+    ?>
 </div>
 <?php
-include('includes/divider.php');
-include('includes/how_section.php');
-include('includes/divider.php');
-
 include('bottom.php');
 
 ?>

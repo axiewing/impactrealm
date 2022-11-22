@@ -5,7 +5,7 @@ $n_dash = true;
 // echo json_encode($event);
 include('top.php');
 
-?><div class="row ">
+?><div class="row  foc">
     <div class="col-1"></div>
     <div style="min-height: 70vh;" class=" col-10">
         <?php

@@ -13,7 +13,7 @@ $events_obj = (object)[
     "title" => "Event created by this user",
     "events" => $events
 ];
-?><div class="row ">
+?><div class="row foc">
 <div class="col-1"></div>
 <div class=" col-10">
 <?php
