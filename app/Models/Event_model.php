@@ -49,13 +49,8 @@ class Event_model extends Model
 
     public function get_alll_events()
     {
-        $query = $this->orderBy('event.id', 'desc');
-        return $query->findAll();
-    }
-    public function get_all_user()
-    {
-        $query = $this->select('secret, last_used_at, username,status from auth_identities')
-        ->join('users','user_id= users.id');
+        $query = $this->select('*, event.id as eid ')->join('users','created_by= users.id')
+        ->orderBy('event.id', 'desc');
         return $query->findAll();
     }
 

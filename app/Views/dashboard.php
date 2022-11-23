@@ -1,20 +1,20 @@
 <?php
+
 use \App\Models\Event_model;
 use \App\Models\User_Event_model;
+use CodeIgniter\Shield\Models\UserModel;
 
 $e_model = new Event_model();
 $eu_model = new User_Event_model();
+$u_model = new UserModel();
 
-// $all_events = $e_model->get_alll_events();
-// $all_users = $e_model->get_all_user();
-// echo json_encode($all_users);
-
+$all_events = $e_model->get_alll_events();
+$all_users = $u_model->get_all_user();
 $dashboard_page = true;
 $side_nav = true;
 include('top.php');
 ?>
 
-<!-- Sale & Revenue Start -->
 <div style="min-height: 70vh;" class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-sm-6 col-xl-3">
@@ -45,8 +45,98 @@ include('top.php');
             </div>
         </div>
     </div>
+<?php if($u_status == "admin"){
+?>
+
+    <div class="bg-secondary text-center rounded p-4 mt-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">All Users</h6>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-white">
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Last login</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($all_users as $index => $l_user) {
+                    ?>
+                        <tr>
+                            <td><?php echo $index;?></td>
+                            <td><?php echo $l_user->username;?></td>
+                            <td><?php echo $l_user->secret;?></td>
+                            <td><?php echo $l_user->last_used_at;?></td>
+                            <td><a class="btn btn-sm btn-primary" href="<?php echo base_url().'/user/'.$l_user->uid;?>">Show</a></td>
+                        </tr>
+
+                    <?php
+                    }
+
+                    ?>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    
+    <div class="bg-secondary text-center rounded p-4 mt-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">All Events</h6>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-white">
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Created by</th>
+                        <th scope="col">Date and Time</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($all_events as $index => $l_event) {
+                    ?>
+                        <tr>
+                            <td><?php echo $index;?></td>
+                            <td><?php echo $l_event["title"];?></td>
+                            <td><?php echo $l_event["username"];?></td>
+                            <td><?php echo $l_event["event_date"];?></td>
+                            <td><a class="btn btn-sm btn-primary" href="<?php echo base_url().'/event/'.$l_event["eid"];?>">Show</a></td>
+                        </tr>
+
+                    <?php
+                    }
+
+                    ?>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+<?php
+
+} ?>
+
+
+
+
+
+
 </div>
-<!-- Sale & Revenue End -->
+
 
 
 

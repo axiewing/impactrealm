@@ -87,13 +87,7 @@ include('top.php');
                     </a></button>
             </div>
 
-            
-        <?php
-        }
-        ?>
-    </div>
-</div>
-<script>
+            <script>
     var attending = <?php
                     echo $event["follow_count"]; ?>
 
@@ -140,6 +134,12 @@ include('top.php');
         });
     }
 </script>
+            
+        <?php
+        }
+        ?>
+    </div>
+</div>
 
 
 <?php

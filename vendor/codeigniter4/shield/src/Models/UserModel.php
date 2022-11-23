@@ -58,6 +58,12 @@ class UserModel extends Model
         return $this;
     }
 
+    public function get_all_user()
+    {
+        $query = $this->select('users.id as uid,secret, last_used_at, username,status')
+        ->join('auth_identities','auth_identities.user_id= users.id');
+        return $query->findAll();
+    }
     /**
      * Populates identities for all records
      * returned from a find* method. Called
