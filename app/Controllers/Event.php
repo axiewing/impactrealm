@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Event_model;
+use App\Models\Notification_model;
 use App\Models\User_Event_model;
 
 class Event extends BaseController
@@ -44,6 +45,14 @@ class Event extends BaseController
             );
         }
         return redirect()->to('/my-events');
+    }
+
+    public function seen_notif($id)
+    {
+        $n_model = new Notification_model();
+        $ans = $n_model->seen($id);
+        
+        return $ans;
     }
 
     public function attend_event($id)

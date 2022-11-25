@@ -15,7 +15,7 @@ $side_nav = true;
 include('top.php');
 ?>
 
-<div style="min-height: 70vh;" class="container-fluid pt-4 px-4">
+<div style="min-height: 70vh;" class="foc container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-sm-6 col-xl-3">
             <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
@@ -45,7 +45,11 @@ include('top.php');
             </div>
         </div>
     </div>
-<?php if($u_status == "admin"){
+<?php 
+
+
+$admin_list = json_decode($_ENV["admin.list"]);
+if(in_array(auth()->user()->id, $admin_list)){
 ?>
 
     <div class="bg-secondary text-center rounded p-4 mt-4">
@@ -68,10 +72,11 @@ include('top.php');
                     foreach ($all_users as $index => $l_user) {
                     ?>
                         <tr>
-                            <td><?php echo $index;?></td>
+                            <td><?php echo $index+1;?></td>
                             <td><?php echo $l_user->username;?></td>
                             <td><?php echo $l_user->secret;?></td>
-                            <td><?php echo $l_user->last_used_at;?></td>
+                            <td><?php $date = strtotime( $l_user->last_used_at );
+                            if($date) echo date('d-m-Y H:i:s ', $date+(14*3600));?></td>
                             <td><a class="btn btn-sm btn-primary" href="<?php echo base_url().'/user/'.$l_user->uid;?>">Show</a></td>
                         </tr>
 
@@ -108,7 +113,7 @@ include('top.php');
                     foreach ($all_events as $index => $l_event) {
                     ?>
                         <tr>
-                            <td><?php echo $index;?></td>
+                            <td><?php echo $index+1;?></td>
                             <td><?php echo $l_event["title"];?></td>
                             <td><?php echo $l_event["username"];?></td>
                             <td><?php echo $l_event["event_date"];?></td>

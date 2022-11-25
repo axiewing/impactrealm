@@ -43,6 +43,7 @@ $routes->get('/event/(:num)', 'Event::show/$1');
 $routes->get('/user/(:num)', 'Home::show_user/$1');
 if (auth()->loggedIn()) {
     $routes->get('/dashboard', 'Home::dashboard');
+    $routes->get('/notifications', 'Notification::all');
     $routes->get('/upcoming-events', 'Home::upcoming_events');
     $routes->get('/past-events', 'Home::past_events');
     $routes->get('/my-events', 'Home::my_events');
@@ -51,6 +52,7 @@ if (auth()->loggedIn()) {
     $routes->post('/settings', 'Setting::settings');
     $routes->post('/new-event', 'Event::new_event');
     $routes->get('/del-event/(:num)', 'Event::delete_event/$1');
+    $routes->get('/seen/(:num)', 'Event::seen_notif/$1');
     $routes->get('/attend-event/(:num)', 'Event::attend_event/$1');
     $routes->get('/unattend-event/(:num)', 'Event::unattend_event/$1');
 }else{

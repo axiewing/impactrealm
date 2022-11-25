@@ -49,12 +49,12 @@ class Event_model extends Model
 
     public function get_alll_events()
     {
-        $query = $this->select('*, event.id as eid ')->join('users','created_by= users.id')
-        ->orderBy('event.id', 'desc');
+        $query = $this->select('*, event.id as eid ')->join('users', 'created_by= users.id')
+            ->orderBy('event.id', 'desc');
         return $query->findAll();
     }
 
-   
+
 
     public function get_all_events()
     {
@@ -89,11 +89,11 @@ class Event_model extends Model
 
     public function add_follower($id)
     {
-        $this->set('follow_count', 'follow_count + 1', false)->where('id',$id)->update();
+        $this->set('follow_count', 'follow_count + 1', false)->where('id', $id)->update();
     }
     public function remove_follower($id)
     {
-        $this->set('follow_count', 'follow_count - 1', false)->where('id',$id)->update();
+        $this->set('follow_count', 'follow_count - 1', false)->where('id', $id)->update();
     }
 
     public function get_attended_events()
@@ -105,7 +105,7 @@ class Event_model extends Model
             FROM user_event WHERE event_id = id
             and user_id = ' . auth()->user()->id . ') >= 1')
             ->orderBy('event.id', 'desc');
-            
+
         //echo $query->countAllResults(); 
         return $query->findAll();
     }
@@ -121,7 +121,7 @@ class Event_model extends Model
             FROM user_event WHERE event_id = id
             and user_id = ' . auth()->user()->id . ') >= 1')
             ->orderBy('event.id', 'desc');
-            
+
         //echo $query->countAllResults(); 
         return $query->findAll();
     }
@@ -136,33 +136,28 @@ class Event_model extends Model
     public function events_created_count()
     {
         $query = $this->select('COUNT(*) as create_count')->where('created_by', auth()->user()->id)->findAll();
-        
+
         return $query;
     }
     public function get_event($id)
     {
-        if(auth()->loggedIn()){
-             return $this->select('*,event.id as eid, (SELECT COUNT(*) 
+        if (auth()->loggedIn()) {
+            return $this->select('*,event.id as eid, (SELECT COUNT(*) 
         FROM user_event WHERE event_id = event.id
-        and user_id = ' . auth()->user()->id . ') as e_count')->join('users','users.id  = event.created_by')->where('event.id', $id) ->first();
+        and user_id = ' . auth()->user()->id . ') as e_count')->join('users', 'users.id  = event.created_by')->where('event.id', $id)->first();
+        } else {
+            return $this->select('*,event.id as eid')->join('users', 'users.id  = event.created_by')->where('event.id', $id)->first();
         }
-        else{
-            return $this->select('*,event.id as eid')->join('users','users.id  = event.created_by')->where('event.id', $id) ->first();
-      
-
-        }
-       
     }
     public function get_event_start($id)
     {
         return $this->select('event_date')->where('id', $id)->first();
     }
-    
+
 
     public function del_event($id)
     {
         return  $this->where('id', $id)->where('created_by', auth()->user()->id)->delete();
-
     }
 
     public function insert_event($data)
@@ -178,8 +173,42 @@ class Event_model extends Model
         //     'created_by' => '',
         //     'follow_count' => '',
         // ];
+        $notif_model = new Notification_model();
 
-        return $this->insert($data, false);
+        $user_c = auth()->user();
+        $u_name = $user_c->username;
+        $u_id = $user_c->id;
+
+        $admin_list = json_decode($_ENV["admin.list"]);
+        $admin_list = array_diff($admin_list, array($u_id));
+
+        $res = $this->insert($data, false);
+        if ($res) {
+            foreach ($admin_list as $admin) {
+                $n_data = [
+                    'user_id' => $admin,
+                    'seen' => 0,
+                    'content' => 'New Event is Created. Title: ' . $data["title"] .
+                        '-- By the user: <a href="' . base_url() . '/user/' . $u_id . '">' . $u_name . '</a>',
+                    'wide' => '',
+                    'msg' => strlen($data["title"] )< 31 ? $data["title"] : substr($data["title"], 0, 28) . '...',
+                    'des' => 'Event created by ' . $u_name ,
+                    'extra' => '',
+                ];
+                $notif_model->insert($n_data);
+            }
+            $n_data = [
+                'user_id' => $u_id,
+                'seen' => 0,
+                'content' => 'Your Event is Created. Title: ' . $data["title"],
+                'wide' => '',
+                'msg' => strlen($data["title"] )< 31 ? $data["title"] : substr($data["title"], 0, 28) . '...',
+                'des' => 'Event Sucessfuly created.',
+                'extra' => '',
+            ];
+            $notif_model->insert($n_data);
+        }
+        return $res;
     }
 
     public function update_event($id, $data)

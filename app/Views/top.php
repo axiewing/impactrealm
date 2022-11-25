@@ -1,8 +1,14 @@
 <?php
+
+use App\Models\Notification_model;
+
+
 if (auth()->loggedIn()) {
     $user_c = auth()->user();
     $u_name = $user_c->username;
     $u_status = $user_c->status;
+    $nofication_model = new Notification_model();
+    $notificantions = $nofication_model->my_notifications(5);
 }
 //echo json_encode($user_c->status);
 // $user_c->status = "admin";
@@ -30,7 +36,7 @@ if (auth()->loggedIn()) {
     </script>
 
     <!-- Favicon -->
-    <link href="<?php echo base_url();?>/img/favicon.ico" rel="icon">
+    <link href="<?php echo base_url(); ?>/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,13 +48,13 @@ if (auth()->loggedIn()) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="<?php echo base_url();?>/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="<?php echo base_url();?>/css/style.css?v=0.1" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>/css/style.css?v=0.1" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 </head>
 
@@ -76,12 +82,12 @@ if (auth()->loggedIn()) {
                         </div>
                     </div>
                     <div class="navbar-nav w-100">
-                        <a href="<?php echo base_url();?>/dashboard" class="nav-item nav-link <?php if (isset($dashboard_page)) echo "active"; ?>"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                        <a href="<?php echo base_url();?>/upcoming-events" class="nav-item nav-link <?php if (isset($upcoming_page)) echo "active"; ?>"><i class="fa fa-calendar-minus me-2"></i>Events to Attend</a>
-                        <a href="<?php echo base_url();?>/past-events" class="nav-item nav-link <?php if (isset($past_page)) echo "active"; ?>"><i class="fa fa-calendar-check me-2"></i>Events Attended</a>
-                        <a href="<?php echo base_url();?>/my-events" class="nav-item nav-link <?php if (isset($my_page)) echo "active"; ?>"><i class="fa fa-calendar me-2"></i>My Events</a>
-                        <a href="<?php echo base_url();?>/new-event" class="nav-item nav-link <?php if (isset($new_page)) echo "active"; ?>"><i class="fa fa-calendar-plus me-2"></i>Create Event</a>
-                        <a href="<?php echo base_url();?>/settings" class="nav-item nav-link <?php if (isset($settings_page)) echo "active"; ?>"><i class="fa fa-wrench me-2"></i>Settings</a>
+                        <a href="<?php echo base_url(); ?>/dashboard" class="nav-item nav-link <?php if (isset($dashboard_page)) echo "active"; ?>"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                        <a href="<?php echo base_url(); ?>/upcoming-events" class="nav-item nav-link <?php if (isset($upcoming_page)) echo "active"; ?>"><i class="fa fa-calendar-minus me-2"></i>Events to Attend</a>
+                        <a href="<?php echo base_url(); ?>/past-events" class="nav-item nav-link <?php if (isset($past_page)) echo "active"; ?>"><i class="fa fa-calendar-check me-2"></i>Events Attended</a>
+                        <a href="<?php echo base_url(); ?>/my-events" class="nav-item nav-link <?php if (isset($my_page)) echo "active"; ?>"><i class="fa fa-calendar me-2"></i>My Events</a>
+                        <a href="<?php echo base_url(); ?>/new-event" class="nav-item nav-link <?php if (isset($new_page)) echo "active"; ?>"><i class="fa fa-calendar-plus me-2"></i>Create Event</a>
+                        <a href="<?php echo base_url(); ?>/settings" class="nav-item nav-link <?php if (isset($settings_page)) echo "active"; ?>"><i class="fa fa-wrench me-2"></i>Settings</a>
 
                     </div>
                 </nav>
@@ -102,9 +108,9 @@ if (auth()->loggedIn()) {
                         <i class="fa fa-bars"></i>
                     </a>
                 <?php  } ?>
-                <a href="<?php echo base_url();?>/">
+                <a href="<?php echo base_url(); ?>/">
                     <div class="navbar-brand  m-1">
-                        <img id="top_logo" class="logo_nav" src="<?php echo base_url();?>/img/logo_.png" />
+                        <img id="top_logo" class="logo_nav" src="<?php echo base_url(); ?>/img/logo_.png" />
                     </div>
                 </a>
 
@@ -114,7 +120,7 @@ if (auth()->loggedIn()) {
                     ?>
 
                         <a target="_blank" href="https://discord.com/invite/WtGSYgMcgu" class="nav-link">
-                            
+
                             <span class=" ">Join us on Discord</span>
                         </a>
 
@@ -126,46 +132,58 @@ if (auth()->loggedIn()) {
                                 <span class=" ">Notification</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                                <p class="p-3">notifications coming soon</p>
-                                <!--a href="#" class="dropdown-item">
-                                    <h6 class="fw-normal mb-0">Profile updated</h6>
-                                    <small>15 minutes ago</small>
-                                </a>
-                                <hr class="dropdown-divider">
-                                <a href="#" class="dropdown-item">
-                                    <h6 class="fw-normal mb-0">New user added</h6>
-                                    <small>15 minutes ago</small>
-                                </a>
-                                <hr class="dropdown-divider">
-                                <a href="#" class="dropdown-item">
-                                    <h6 class="fw-normal mb-0">Password changed</h6>
-                                    <small>15 minutes ago</small>
-                                </a>
-                                <hr class="dropdown-divider">
-                                <a href="#" class="dropdown-item text-center">See all notifications</a>
-                    -->
+
+                                <?php
+                                if (count($notificantions) == 0) {
+                                ?>
+                                    <a href="#" class="dropdown-item">
+                                        <h6 class="fw-normal mb-0">No new Notifications.</h6>
+                                        <small>All Good</small>
+                                    </a>
+                                    <?php
+                                } else {
+
+                                    foreach ($notificantions as $ind => $notif) {
+                                    ?>
+                                        <span  class="dropdown-item">
+        
+                                            <h6 class="fw-normal mb-0"><?php echo $notif["msg"]; ?></h6>
+                                            <small><?php echo $notif["des"]; ?></small>
+                                        </span>
+
+
+                                        <hr class="dropdown-divider">
+                                    <?php
+                                    }
+                                    ?>
+                                    <a href="<?php echo base_url(); ?>/notifications" class="dropdown-item text-center">See all notifications</a>
+                                <?php
+                                }
+                                ?>
+
                             </div>
                         </div>
                         <?php if (isset($n_dash)) {
                         ?>
 
-                            
+
                         <?php } ?>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                                 <span class=" "><?php echo $u_name; ?></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                                <a href="<?php echo base_url();?>/dashboard" class="dropdown-item">My Profile</a>
-                                <a href="<?php echo base_url();?>/settings" class="dropdown-item">Settings</a>
-                                <a href="<?php echo base_url();?>/logout" class="dropdown-item">Log Out</a>
+                                <a href="<?php echo base_url(); ?>/dashboard" class="dropdown-item">My Profile</a>
+                                <a href="<?php echo base_url(); ?>/settings" class="dropdown-item">Settings</a>
+                                <a href="<?php echo base_url(); ?>/logout" class="dropdown-item">Log Out</a>
                             </div>
                         </div>
+                        
                     <?php } else {
                     ?>
-                        <a href="<?php echo base_url();?>/about"><button class="btn btn-primary rounded-pill m-3">About</button></a>
-                        <a href="<?php echo base_url();?>/login"><button class="btn btn-primary rounded-pill m-3">Login</button></a>
-                        <a href="<?php echo base_url();?>/register"><button class="btn btn-primary rounded-pill m-3">Register</button></a>
+                        <a href="<?php echo base_url(); ?>/about"><button class="btn btn-primary rounded-pill m-3">About</button></a>
+                        <a href="<?php echo base_url(); ?>/login"><button class="btn btn-primary rounded-pill m-3">Login</button></a>
+                        <a href="<?php echo base_url(); ?>/register"><button class="btn btn-primary rounded-pill m-3">Register</button></a>
 
                     <?php
                     }
