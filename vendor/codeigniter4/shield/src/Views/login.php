@@ -4,11 +4,11 @@
 
 <?= $this->section('main') ?>
 <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
-    <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-6">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-6">
         <div class="bg-secondary rounded p-4 px-sm-5 my-4 mx-3">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <a href="<?php echo base_url();?>/" class="">
-                    <img alt="logo" class="logo_s" src="img/logo_s.png"></a>
+                <img id="top_logo" class="logo_nav" src="<?php echo base_url(); ?>/img/logo_.png" /></a>
                 <h3><?= lang('Auth.login') ?></h3>
             </div>
 
@@ -74,4 +74,9 @@
         </div>
     </div>
 
+    <script>
+        const base_url = "<?php echo base_url(); ?>";
+    </script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="<?php echo base_url();?>/js/main.js"></script>
 <?= $this->endSection() ?>

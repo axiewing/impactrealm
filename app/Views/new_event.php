@@ -22,7 +22,7 @@ include('top.php');
                     </div>
                     <div class="mb-3">
                         <label for="banner" class="form-label">Select Banner image</label>
-                        <input class="form-control bg-dark" type="file" id="banner" name="banner">
+                        <input class="form-control bg-dark" type="file" id="banner" name="banner" required>
                     </div>
                     <div class="mb-3">
                         <label for="shortdescription">Description</label>

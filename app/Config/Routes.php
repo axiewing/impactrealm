@@ -42,6 +42,11 @@ $routes->get('/all-events', 'Event::all_events');
 $routes->get('/event/(:num)', 'Event::show/$1');
 $routes->get('/user/(:num)', 'Home::show_user/$1');
 if (auth()->loggedIn()) {
+    $super_admin_list = json_decode($_ENV["admin.list"]);
+    if (in_array(auth()->user()->id, $super_admin_list)) {
+        $routes->get('/add-admin/(:num)', 'Home::add_admin/$1');
+        $routes->get('/remove-admin/(:num)', 'Home::rm_admin/$1');
+    }
     $routes->get('/dashboard', 'Home::dashboard');
     $routes->get('/notifications', 'Notification::all');
     $routes->get('/upcoming-events', 'Home::upcoming_events');
@@ -52,15 +57,18 @@ if (auth()->loggedIn()) {
     $routes->post('/settings', 'Setting::settings');
     $routes->post('/new-event', 'Event::new_event');
     $routes->get('/del-event/(:num)', 'Event::delete_event/$1');
+    $routes->get('/a-del-event/(:num)', 'Event::a_delete_event/$1');
     $routes->get('/seen/(:num)', 'Event::seen_notif/$1');
     $routes->get('/attend-event/(:num)', 'Event::attend_event/$1');
     $routes->get('/unattend-event/(:num)', 'Event::unattend_event/$1');
-}else{
+} else {
     $routes->get('/dashboard', 'Home::index');
     $routes->get('/upcoming-events', 'Home::index');
     $routes->get('/past-events', 'Home::index');
     $routes->get('/my-events', 'Home::index');
-    $routes->get('/new-event',function(){return view(setting('Auth.views')['login']);});
+    $routes->get('/new-event', function () {
+        return view(setting('Auth.views')['login']);
+    });
     $routes->get('/settings', 'Home::index');
 }
 

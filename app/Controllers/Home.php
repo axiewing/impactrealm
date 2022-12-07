@@ -3,9 +3,22 @@
 namespace App\Controllers;
 
 use App\Models\Event_model;
+use CodeIgniter\Shield\Models\UserModel;
 
 class Home extends BaseController
 {
+    public function add_admin($id){
+        $u_model = new UserModel();
+        $u_model->make_admin($id);
+        
+        return redirect('dashboard');
+    }
+    public function rm_admin($id){
+        $u_model = new UserModel();
+        $u_model->revoke_admin($id);
+        
+        return redirect('dashboard');
+    }
 
     public function show_user($id)
     {

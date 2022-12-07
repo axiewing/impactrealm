@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use CodeIgniter\Shield\Models\UserModel;
 use DateTime;
 
 class Event_model extends Model
@@ -35,12 +36,12 @@ class Event_model extends Model
     {
         $now = date_format(new DateTime(), 'Y-m-d H:i:s');
         if (auth()->loggedIn()) {
-            $query = $this->select('*, (SELECT COUNT(*) 
-            FROM user_event WHERE event_id = id
-            and user_id = ' . auth()->user()->id . ') as e_count')->where('event_date >=', $now)->orderBy('event.id', 'desc');
+            $query = $this->select('*, event.id as eid,username as author, (SELECT COUNT(*) 
+            FROM user_event WHERE event_id = event.id
+            and user_id = ' . auth()->user()->id . ') as e_count')->join("users","created_by = users.id")->where('event_date >=', $now)->orderBy('event.id', 'desc');
         } else {
 
-            $query = $this->where('event_date >=', $now)->orderBy('event.id', 'desc');
+            $query = $this->select('*, event.id as eid,username as author')->join("users","created_by = users.id")->where('event_date >=', $now)->orderBy('event.id', 'desc');
         }
 
         //echo $query->countAllResults(); 
@@ -81,6 +82,21 @@ class Event_model extends Model
         } else {
 
             $query = $this->where('event_date >=', $now)->where('created_by =', $uid)->orderBy('event.id', 'desc');
+        }
+
+        //echo $query->countAllResults(); 
+        return $query->findAll();
+    }
+    public function get_user_past_events($uid)
+    {
+        $now = date_format(new DateTime(), 'Y-m-d H:i:s');
+        if (auth()->loggedIn()) {
+            $query = $this->select('*, (SELECT COUNT(*) 
+            FROM user_event WHERE event_id = id
+            and user_id = ' . auth()->user()->id . ') as e_count')->where('event_date <', $now)->where('created_by =', $uid)->orderBy('event.id', 'desc');
+        } else {
+
+            $query = $this->where('event_date <', $now)->where('created_by =', $uid)->orderBy('event.id', 'desc');
         }
 
         //echo $query->countAllResults(); 
@@ -157,6 +173,11 @@ class Event_model extends Model
 
     public function del_event($id)
     {
+        $u_model = new UserModel();
+        $admin_list = $u_model->get_admin_list();
+        if (in_array(auth()->user()->id, $admin_list)) {
+            return  $this->where('id', $id)->delete();
+        }
         return  $this->where('id', $id)->where('created_by', auth()->user()->id)->delete();
     }
 
@@ -179,7 +200,9 @@ class Event_model extends Model
         $u_name = $user_c->username;
         $u_id = $user_c->id;
 
-        $admin_list = json_decode($_ENV["admin.list"]);
+        $u_model = new UserModel();
+
+        $admin_list = $u_model->get_admin_list();
         $admin_list = array_diff($admin_list, array($u_id));
 
         $res = $this->insert($data, false);
@@ -191,8 +214,8 @@ class Event_model extends Model
                     'content' => 'New Event is Created. Title: ' . $data["title"] .
                         '-- By the user: <a href="' . base_url() . '/user/' . $u_id . '">' . $u_name . '</a>',
                     'wide' => '',
-                    'msg' => strlen($data["title"] )< 31 ? $data["title"] : substr($data["title"], 0, 28) . '...',
-                    'des' => 'Event created by ' . $u_name ,
+                    'msg' => strlen($data["title"]) < 31 ? $data["title"] : substr($data["title"], 0, 28) . '...',
+                    'des' => 'Event created by ' . $u_name,
                     'extra' => '',
                 ];
                 $notif_model->insert($n_data);
@@ -202,7 +225,7 @@ class Event_model extends Model
                 'seen' => 0,
                 'content' => 'Your Event is Created. Title: ' . $data["title"],
                 'wide' => '',
-                'msg' => strlen($data["title"] )< 31 ? $data["title"] : substr($data["title"], 0, 28) . '...',
+                'msg' => strlen($data["title"]) < 31 ? $data["title"] : substr($data["title"], 0, 28) . '...',
                 'des' => 'Event Sucessfuly created.',
                 'extra' => '',
             ];

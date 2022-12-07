@@ -46,6 +46,21 @@ class Event extends BaseController
         }
         return redirect()->to('/my-events');
     }
+    public function a_delete_event($id)
+    {
+        $e_model = new Event_model();
+        $ans = $e_model->del_event($id);
+        if ($ans == 1) {
+            $data = array(
+                'msg_list' => ["Event Deleted Successfuly"]
+            );
+        } else {
+            $data = array(
+                'msg_list' => ["Error While Deleting"]
+            );
+        }
+        return redirect('dashboard');
+    }
 
     public function seen_notif($id)
     {

@@ -323,15 +323,20 @@
 }
 
 .e-box {
-    height: 415px;
+    height: 100%;
 }
 .e-box h5 {
-    height: 27px;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
     overflow: hidden;
 }
 .e-box p {
-    height: 27px;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
     overflow: hidden;
+    word-wrap: break-word;
 }
 
 .foc{

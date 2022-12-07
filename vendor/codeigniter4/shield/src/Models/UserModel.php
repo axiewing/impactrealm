@@ -98,6 +98,22 @@ class UserModel extends Model
         return $data;
     }
 
+    public function get_admin_list(){
+        $qry = $this->where("status","admin")->findAll();
+        $admin_list = array();
+        foreach($qry as $admin){
+            array_push($admin_list,$admin->id);
+        }
+        return $admin_list;
+    }
+
+    public function make_admin($id){
+        $this->update($id,['status'=>"admin"]);
+    }
+
+    public function revoke_admin($id){
+        $this->update($id,['status'=>""]);
+    }
     /**
      * Map our users by ID to make assigning simpler
      *

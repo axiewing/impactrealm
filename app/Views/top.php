@@ -51,7 +51,7 @@ if (auth()->loggedIn()) {
     <link href="<?php echo base_url(); ?>/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="<?php echo base_url(); ?>/css/style.css?v=0.1" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>/css/style.css?v=0.2" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -124,6 +124,7 @@ if (auth()->loggedIn()) {
                             <span class=" ">Join us on Discord</span>
                         </a>
 
+                        <a href="<?php echo base_url(); ?>/about"><button class="btn btn-primary rounded-pill m-3">About</button></a>
                     <?php
                     }
                     if (auth()->loggedIn()) { ?>
@@ -181,7 +182,6 @@ if (auth()->loggedIn()) {
                         
                     <?php } else {
                     ?>
-                        <a href="<?php echo base_url(); ?>/about"><button class="btn btn-primary rounded-pill m-3">About</button></a>
                         <a href="<?php echo base_url(); ?>/login"><button class="btn btn-primary rounded-pill m-3">Login</button></a>
                         <a href="<?php echo base_url(); ?>/register"><button class="btn btn-primary rounded-pill m-3">Register</button></a>
 

@@ -45,95 +45,116 @@ include('top.php');
             </div>
         </div>
     </div>
-<?php 
+    <?php
 
 
-$admin_list = json_decode($_ENV["admin.list"]);
-if(in_array(auth()->user()->id, $admin_list)){
-?>
 
-    <div class="bg-secondary text-center rounded p-4 mt-4">
-        <div class="d-flex align-items-center justify-content-between mb-4">
-            <h6 class="mb-0">All Users</h6>
-        </div>
-        <div class="table-responsive">
-            <table class="table text-start align-middle table-bordered table-hover mb-0">
-                <thead>
-                    <tr class="text-white">
-                        <th scope="col">#</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Last login</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($all_users as $index => $l_user) {
-                    ?>
-                        <tr>
-                            <td><?php echo $index+1;?></td>
-                            <td><?php echo $l_user->username;?></td>
-                            <td><?php echo $l_user->secret;?></td>
-                            <td><?php $date = strtotime( $l_user->last_used_at );
-                            if($date) echo date('d-m-Y H:i:s ', $date+(14*3600));?></td>
-                            <td><a class="btn btn-sm btn-primary" href="<?php echo base_url().'/user/'.$l_user->uid;?>">Show</a></td>
+    $admin_list = $u_model->get_admin_list();
+    if (in_array(auth()->user()->id, $admin_list)) {
+    ?>
+
+        <div class="bg-secondary text-center rounded p-4 mt-4">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <h6 class="mb-0">All Users</h6>
+            </div>
+            <div class="table-responsive">
+                <table class="table text-start align-middle table-bordered table-hover mb-0">
+                    <thead>
+                        <tr class="text-white">
+                            <th scope="col">#</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Last login</th>
+                            <th scope="col">Action</th>
                         </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($all_users as $index => $l_user) {
+                        ?>
+                            <tr>
+                                <td><?php echo $index + 1; ?></td>
+                                <td><?php echo $l_user->username; ?></td>
+                                <td><?php echo $l_user->secret; ?></td>
+                                <td><?php $date = strtotime($l_user->last_used_at);
+                                    if ($date) echo date('d-m-Y H:i:s ', $date + (14 * 3600)); ?></td>
+                                <td><a class="btn btn-sm btn-primary" href="<?php echo base_url() . '/user/' . $l_user->uid; ?>">Show</a>
 
-                    <?php
-                    }
+                                    <?php
+                                    $super_admin_list = json_decode($_ENV["admin.list"]);
+                                    if (in_array(auth()->user()->id, $super_admin_list)) {
 
-                    ?>
+                                        if (in_array($l_user->uid, $admin_list)) {
+                                    ?>
+                                            <a class="btn btn-sm btn-danger ms-2" href="<?php echo base_url() . '/remove-admin/' . $l_user->uid; ?>">Remove admin</a>
 
-                </tbody>
-            </table>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <a class="btn btn-sm btn-primary ms-2" href="<?php echo base_url() . '/add-admin/' . $l_user->uid; ?>">Make admin</a>
+
+                                    <?php
+                                        }
+                                    } ?>
+                                </td>
+                            </tr>
+
+                        <?php
+                        }
+
+                        ?>
+
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
 
 
 
-    
-    <div class="bg-secondary text-center rounded p-4 mt-4">
-        <div class="d-flex align-items-center justify-content-between mb-4">
-            <h6 class="mb-0">All Events</h6>
-        </div>
-        <div class="table-responsive">
-            <table class="table text-start align-middle table-bordered table-hover mb-0">
-                <thead>
-                    <tr class="text-white">
-                        <th scope="col">#</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Created by</th>
-                        <th scope="col">Date and Time</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($all_events as $index => $l_event) {
-                    ?>
-                        <tr>
-                            <td><?php echo $index+1;?></td>
-                            <td><?php echo $l_event["title"];?></td>
-                            <td><?php echo $l_event["username"];?></td>
-                            <td><?php echo $l_event["event_date"];?></td>
-                            <td><a class="btn btn-sm btn-primary" href="<?php echo base_url().'/event/'.$l_event["eid"];?>">Show</a></td>
+
+        <div class="bg-secondary text-center rounded p-4 mt-4">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <h6 class="mb-0">All Events</h6>
+            </div>
+            <div class="table-responsive">
+                <table class="table text-start align-middle table-bordered table-hover mb-0">
+                    <thead>
+                        <tr class="text-white">
+                            <th scope="col">#</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Created by</th>
+                            <th scope="col">Date and Time</th>
+                            <th scope="col">Action</th>
                         </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($all_events as $index => $l_event) {
+                        ?>
+                            <tr>
+                                <td><?php echo $index + 1; ?></td>
+                                <td><?php echo $l_event["title"]; ?></td>
+                                <td><?php echo $l_event["username"]; ?></td>
+                                <td><?php echo $l_event["event_date"]; ?></td>
+                                <td><a class="btn btn-sm btn-primary" href="<?php echo base_url() . '/event/' . $l_event["eid"]; ?>">Show</a>
+                                <a class="btn btn-sm btn-danger ms-2" href="<?php echo base_url() . '/a-del-event/' . $l_event["eid"]; ?>">Delete</a>
+                            </td>
+                            </tr>
 
-                    <?php
-                    }
+                        <?php
+                        }
 
-                    ?>
+                        ?>
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
 
 
-<?php
+    <?php
 
-} ?>
+    } ?>
 
 
 

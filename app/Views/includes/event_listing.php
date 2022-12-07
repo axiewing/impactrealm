@@ -14,14 +14,14 @@
         foreach ($events_obj->events as $event) {
         ?>
             <div id='eview<?php echo $event["id"]; ?>'  class="col-sm-7 col-md-5 col-xl-3">
-                <div class="e-box rounded border border-info">
+                <div class="e-box rounded border border-light">
                     <div class="text-center mt-2">
-                    <a href="<?php echo base_url().'/event/'.$event["id"]?>">
-                        <img class="img-fluid mx-auto mb-4" src="<?php echo base_url().'/event_imgs/'.$event["banner"]; ?>" style="width:auto;height: 200px;object-fit:contain;">
+                    <a href="<?php echo base_url().'/event/'.$event["eid"]?>">
+                        <img class="img-fluid mx-auto mb-4" src="<?php echo base_url().'/event_imgs/'.$event["banner"]; ?>" style="width:auto;height: 200px;object-fit:cover;">
                     </a>
                     </div>
                     <div class="px-3 py-1">
-                    <a href="<?php echo base_url();?>/event/<?php echo $event["id"]?>">
+                    <a href="<?php echo base_url();?>/event/<?php echo $event["eid"]?>">
                         <h5 class="mb-1"><?php echo $event["title"]; ?></h5>
                     </a>
                         <p class="mb-0 text-primary">
@@ -29,7 +29,19 @@
                             $date = date_create_from_format('Y-m-d H:i:s', $event["event_date"]);
                             echo date_format($date, "D M-d h:i a"); ?>
                         </p>
+                        
+                        <?php
+                        if (isset($landing_page)) {
+                            ?>
+                        <p class="mb-0 text-info"><?php echo $event["author"]; ?></p>
+                            <?php
+                        }
+                        else{
+                            ?>
                         <p class="mb-0 text-info"><?php echo $event["content"]; ?></p>
+                            <?php
+                        }
+                        ?>
                         <p class="my-2"><?php echo $event["address"]; ?></p>
                         <?php if (isset($delete_btn)) {
                         ?>
@@ -41,6 +53,7 @@
                         <?php
                         if (auth()->loggedIn()) 
                         if (isset($attend_btn)) {
+                            if($attend_btn)
                             if ($event["e_count"] == "0") {
                         ?>
                                 <button id='attend<?php echo $event["id"]; ?>' onclick='attend_event(<?php echo $event["id"]; ?>,true)' class="btn btn-primary m-1 p-1">Attend</button>
