@@ -13,7 +13,7 @@
         }
         foreach ($events_obj->events as $event) {
         ?>
-            <div id='eview<?php echo $event["id"]; ?>'  class="col-sm-7 col-md-5 col-xl-3">
+            <div id='eview<?php echo $event["eid"]; ?>'  class="col-sm-7 col-md-5 col-xl-3">
                 <div class="e-box rounded border border-light">
                     <div class="text-center mt-2">
                     <a href="<?php echo base_url().'/event/'.$event["eid"]?>">
@@ -45,7 +45,7 @@
                         <p class="my-2"><?php echo $event["address"]; ?></p>
                         <?php if (isset($delete_btn)) {
                         ?>
-                            <a onclick="return confirm('You are about to Delete an Event!!!')" href="<?php echo base_url(); ?>/del-event/<?php echo $event["id"]; ?>">
+                            <a onclick="return confirm('You are about to Delete an Event!!!')" href="<?php echo base_url(); ?>/del-event/<?php echo $event["eid"]; ?>">
                                 <button class="btn btn-danger m-1 p-1">Delete</button>
                             </a>
                         <?php
@@ -56,11 +56,11 @@
                             if($attend_btn)
                             if ($event["e_count"] == "0") {
                         ?>
-                                <button id='attend<?php echo $event["id"]; ?>' onclick='attend_event(<?php echo $event["id"]; ?>,true)' class="btn btn-primary m-1 p-1">Attend</button>
+                                <button id='attend<?php echo $event["eid"]; ?>' onclick='attend_event(<?php echo $event["eid"]; ?>,true)' class="btn btn-primary m-1 p-1">Attend</button>
                             <?php
                             } else {
                             ?>
-                                <button id='attend<?php echo $event["id"]; ?>' onclick='unattend_event(<?php echo $event["id"]; ?>,true)' class="btn btn-light m-1 p-1">Attending</button>
+                                <button id='attend<?php echo $event["eid"]; ?>' onclick='unattend_event(<?php echo $event["eid"]; ?>,true)' class="btn btn-light m-1 p-1">Attending</button>
                         <?php
                             }
                         } ?>

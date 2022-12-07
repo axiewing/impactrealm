@@ -1,19 +1,57 @@
 <?php
 
 use CodeIgniter\Filters\CSRF;
+use CodeIgniter\Shield\Models\UserModel;
 
 $settings_page = true;
 $side_nav = true;
+$u_model = new UserModel();
+$profile = $u_model->get_profile();
 include('top.php');
 ?>
 
 <div class="ms-5 mt-4">
+    <div class="row mt-4 foc">
 
-    <div class="row">
+        <div class="bg-secondary rounded h-100 p-4 col-lg-6 col-md-8 col-sm-12">
+            <h6 class="mb-4">Personal Details</h6>
+            <form action="<?php echo base_url();?>/updateprofile" method="POST">
+                <?= csrf_field() ?>
+                <input hidden name="act" value="pro_update" />
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input class="form-control " value="<?php echo $profile->secret; ?>" id="email"  readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input class="form-control " value="<?php echo $profile->username; ?>" id="username"  readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="fname" class="form-label">First name</label>
+                    <input class="form-control "  value="<?php echo $profile->f_name;?>" id="fname" name="fname"  >
+                </div>
+                <div class="mb-3">
+                    <label for="lname" class="form-label">Last name</label>
+                    <input class="form-control "  value="<?php echo $profile->l_name;?>" id="lname" name="lname"  >
+                </div>
+                <div class="mb-3">
+                    <label for="discordid" class="form-label">Discord ID</label>
+                    <input class="form-control "  value="<?php echo $profile->disc_id;?>" id="discordid" name="discordid"  >
+                </div>
+                <div class="mb-3">
+                    <label for="twitterid" class="form-label">Twitter ID</label>
+                    <input class="form-control "  value="<?php echo $profile->twit_id;?>" id="twitterid" name="twitterid"  >
+                </div>
+                <input class="btn btn-primary" type="submit" value="Update">
+            </form>
+        </div>
+
+    </div>
+    <div class="row mt-4 foc">
 
         <div class="bg-secondary rounded h-100 p-4 col-lg-6 col-md-8 col-sm-12">
             <h6 class="mb-4">Update Password</h6>
-            <form  method="POST">
+            <form method="POST">
                 <?= csrf_field() ?>
                 <input hidden name="act" value="pass_update" />
                 <div class="mb-3">
@@ -32,6 +70,7 @@ include('top.php');
         </div>
 
     </div>
+
 </div>
 
 <style>

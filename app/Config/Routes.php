@@ -55,6 +55,7 @@ if (auth()->loggedIn()) {
     $routes->get('/new-event', 'Event::new_event');
     $routes->get('/settings', 'Setting::settings');
     $routes->post('/settings', 'Setting::settings');
+    $routes->post('/updateprofile', 'Setting::profile');
     $routes->post('/new-event', 'Event::new_event');
     $routes->get('/del-event/(:num)', 'Event::delete_event/$1');
     $routes->get('/a-del-event/(:num)', 'Event::a_delete_event/$1');

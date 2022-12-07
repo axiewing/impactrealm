@@ -2,9 +2,22 @@
 
 namespace App\Controllers;
 
+use CodeIgniter\Shield\Models\UserModel;
 
 class Setting extends BaseController
 {
+    public function profile()
+    {
+        $p_data = [
+            'disc_id' => $_POST["discordid"],
+            'twit_id' => $_POST["twitterid"],
+            'f_name' => $_POST["fname"],
+            'l_name' => $_POST["lname"],
+        ];
+        $u_model = new UserModel();
+        $u_model->update(auth()->user()->id,$p_data);
+        return redirect('settings');
+    }
     public function settings()
     {
         if ($_SERVER["REQUEST_METHOD"] == "GET") {

@@ -29,6 +29,11 @@ class UserModel extends Model
         'active',
         'last_active',
         'deleted_at',
+        'disc_id',
+        'twit_id',
+        'meta_id',
+        'f_name',
+        'l_name',
     ];
     protected $useTimestamps = true;
     protected $afterFind     = ['fetchIdentities'];
@@ -106,6 +111,14 @@ class UserModel extends Model
         }
         return $admin_list;
     }
+
+    public function get_profile(){
+        $qry = $this->where("users.id",auth()->user()->id)->join("auth_identities","users.id = user_id")->first();
+        
+        return $qry;
+    }
+
+    
 
     public function make_admin($id){
         $this->update($id,['status'=>"admin"]);
