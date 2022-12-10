@@ -28,11 +28,11 @@ include('top.php');
                 </div>
                 <div class="mb-3">
                     <label for="fname" class="form-label">First name</label>
-                    <input class="form-control "  value="<?php echo $profile->f_name;?>" id="fname" name="fname"  >
+                    <input class="form-control "  value="<?php echo $profile->first_name;?>" id="fname" name="fname"  >
                 </div>
                 <div class="mb-3">
                     <label for="lname" class="form-label">Last name</label>
-                    <input class="form-control "  value="<?php echo $profile->l_name;?>" id="lname" name="lname"  >
+                    <input class="form-control "  value="<?php echo $profile->last_name;?>" id="lname" name="lname"  >
                 </div>
                 <div class="mb-3">
                     <label for="discordid" class="form-label">Discord ID</label>

@@ -32,8 +32,9 @@ class UserModel extends Model
         'disc_id',
         'twit_id',
         'meta_id',
-        'f_name',
-        'l_name',
+        'first_name',
+        'last_name',
+        'avatar'
     ];
     protected $useTimestamps = true;
     protected $afterFind     = ['fetchIdentities'];
