@@ -2,3 +2,4 @@
 .env
 /writable
 /event_imgs/
+app/Config/App.php
