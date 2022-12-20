@@ -1,0 +1,4 @@
+*.zip
+.env
+/writable
+/event_imgs/
