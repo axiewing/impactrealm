@@ -348,6 +348,8 @@ class CURLRequest extends Request
         $curlOptions[CURLOPT_RETURNTRANSFER] = true;
         $curlOptions[CURLOPT_HEADER]         = true;
         $curlOptions[CURLOPT_FRESH_CONNECT]  = true;
+        
+        $curlOptions[CURLOPT_HTTP_VERSION] = CURL_HTTP_VERSION_1_1;
         // Disable @file uploads in post data.
         $curlOptions[CURLOPT_SAFE_UPLOAD] = true;
 

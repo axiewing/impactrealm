@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b21214d4bddef639a6bc5d8d82ab8056",
+    "content-hash": "7d36f2df746fe7a7d157b109c319f17a",
     "packages": [
         {
             "name": "codeigniter4/settings",
@@ -123,6 +123,62 @@
                 "codeigniter4"
             ],
             "time": "2022-10-30T23:14:47+00:00"
+        },
+        {
+            "name": "datamweb/shield-oauth",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/datamweb/shield-oauth.git",
+                "reference": "071a8bcb1c9b077cf8fa8b466c2b5c7938344a92"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/datamweb/shield-oauth/zipball/071a8bcb1c9b077cf8fa8b466c2b5c7938344a92",
+                "reference": "071a8bcb1c9b077cf8fa8b466c2b5c7938344a92",
+                "shasum": ""
+            },
+            "require": {
+                "codeigniter4/shield": "dev-develop",
+                "php": "^7.4.3 || ^8.0 || ^8.1"
+            },
+            "require-dev": {
+                "codeigniter4/devkit": "^1.0",
+                "codeigniter4/framework": "^4.2.3",
+                "codeigniter4/shield": "dev-develop"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Datamweb\\ShieldOAuth\\": "src"
+                },
+                "exclude-from-classmap": [
+                    "**/Database/Migrations/**"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pooya Parsa Dadashi",
+                    "email": "pooya_parsa_dadashi@yahoo.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "OAuth for CodeIgniter Shield",
+            "homepage": "https://github.com/datamweb/shield-oauth",
+            "keywords": [
+                "Authentication",
+                "authorization",
+                "codeigniter4",
+                "githubOauth",
+                "googelOauth",
+                "oauth",
+                "shield"
+            ],
+            "time": "2022-10-26T00:54:01+00:00"
         },
         {
             "name": "kint-php/kint",
@@ -3595,7 +3651,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "codeigniter4/shield": 20
+        "codeigniter4/shield": 20,
+        "datamweb/shield-oauth": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
