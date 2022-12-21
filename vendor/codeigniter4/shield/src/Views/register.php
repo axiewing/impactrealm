@@ -59,6 +59,10 @@
                     <button type="submit" class="btn btn-primary btn-block"><?= lang('Auth.register') ?></button>
                 </div>
 
+                <div class="d-grid col-12 col-md-8 mx-auto m-3">
+                        <a class="btn  btn-info " style="color:white;" href="<?php echo base_url(); ?>/oauth/google"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> <span>Signin Using Google</span></a>
+
+                    </div>
                 <p class="text-center"><?= lang('Auth.haveAccount') ?> <a href="<?= url_to('login') ?>"><?= lang('Auth.login') ?></a></p>
 
             </form>
