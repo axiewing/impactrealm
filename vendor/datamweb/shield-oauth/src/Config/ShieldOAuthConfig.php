@@ -25,8 +25,8 @@ class ShieldOAuthConfig extends BaseConfig
         //     'allow_login' => true,
         // ],
         'google' => [
-            'client_id' => '666214815604-chtc9iedrkrsr31mac4rp9p3qlr8fqpu.apps.googleusercontent.com',
-            'client_secret' => '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',
+            'client_id' => '36207526141-i2mgafmengv8ukickvvc5jcnabt7rcm7.apps.googleusercontent.com',
+            'client_secret' => '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',
             'allow_login' => true,
         // ...
     ],
