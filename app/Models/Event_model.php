@@ -115,7 +115,7 @@ class Event_model extends Model
     public function get_attended_events()
     {
         $now = date_format(new DateTime(), 'Y-m-d H:i:s');
-        $query = $this->select('*')
+        $query = $this->select('*,event.id as eid')
             ->where('event_date <=', $now)
             ->where('(SELECT COUNT(*) 
             FROM user_event WHERE event_id = id
@@ -129,7 +129,7 @@ class Event_model extends Model
     public function get_attending_events()
     {
         $now = date_format(new DateTime(), 'Y-m-d H:i:s');
-        $query = $this->select('*, (SELECT COUNT(*) 
+        $query = $this->select('*,event.id as eid, (SELECT COUNT(*) 
         FROM user_event WHERE event_id = id
         and user_id = ' . auth()->user()->id . ') as e_count')
             ->where('event_date >=', $now)
@@ -143,7 +143,7 @@ class Event_model extends Model
     }
     public function my_events($offset = 0)
     {
-        $query = $this->where('created_by', auth()->user()->id)->findAll();
+        $query = $this->select('*,event.id as eid')->where('created_by', auth()->user()->id)->findAll();
         return $query;
     }
 
