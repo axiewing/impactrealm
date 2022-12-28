@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use CodeIgniter\Shield\Models\UserModel;
+
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -47,7 +49,35 @@ if (auth()->loggedIn()) {
         $routes->get('/add-admin/(:num)', 'Home::add_admin/$1');
         $routes->get('/remove-admin/(:num)', 'Home::rm_admin/$1');
     }
+    $user = auth()->user();
+    $user->touchIdentity($user->getEmailIdentity());
+    $mailchimp = new \MailchimpMarketing\ApiClient();
+
+        $mailchimp->setConfig([
+            'apiKey' => '0b786de358a7cdd8bd6d8ca8ed76b0ed-us21',
+            'server' => 'us21'
+        ]);
+        $list_id = "1084a4ecb0";
+        $umodel = new  UserModel();
+        $uprofile = $umodel->get_profile();
+        
+
+        try {
+            $response = $mailchimp->lists->addListMember($list_id, [
+                "email_address" => $uprofile->secret,
+                "status" => "subscribed",
+                "merge_fields" => [
+                "FNAME" => $uprofile->first_name,
+                "LNAME" => $uprofile->last_name,
+                ]
+            ]);
+        }catch (\Throwable $th) {
+            //throw $th;
+            //echo $th->getMessage();
+        }
+
     $routes->get('/dashboard', 'Home::dashboard');
+    //$routes->get('/test', 'Home::test');
     $routes->get('/notifications', 'Notification::all');
     $routes->get('/upcoming-events', 'Home::upcoming_events');
     $routes->get('/past-events', 'Home::past_events');

@@ -64,7 +64,7 @@ include('top.php');
                             <th scope="col">#</th>
                             <th scope="col">Username</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Last login</th>
+                            <th scope="col">Last Seen</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>

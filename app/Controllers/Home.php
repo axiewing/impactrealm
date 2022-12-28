@@ -7,6 +7,11 @@ use CodeIgniter\Shield\Models\UserModel;
 
 class Home extends BaseController
 {
+    public function test()
+    {
+        
+           echo  "Test is Working.";
+    }
     public function add_admin($id){
         $u_model = new UserModel();
         $u_model->make_admin($id);
