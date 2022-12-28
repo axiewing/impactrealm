@@ -14,7 +14,8 @@
         "laminas/laminas-escaper": "^2.9",
         "psr/log": "^1.1",
         "codeigniter4/shield": "dev-develop",
-        "datamweb/shield-oauth": "dev-main"
+        "datamweb/shield-oauth": "dev-main",
+        "mailchimp/marketing": "^3.0"
     },
     "require-dev": {
         "codeigniter/coding-standard": "^1.5",
