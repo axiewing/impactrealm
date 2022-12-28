@@ -61,12 +61,12 @@ class Event_model extends Model
     {
         $now = date_format(new DateTime(), 'Y-m-d H:i:s');
         if (auth()->loggedIn()) {
-            $query = $this->select('*, (SELECT COUNT(*) 
+            $query = $this->select('*,event.id as eid, (SELECT COUNT(*) 
             FROM user_event WHERE event_id = id
             and user_id = ' . auth()->user()->id . ') as e_count')->where('event_date >=', $now)->orderBy('event.id', 'desc');
         } else {
 
-            $query = $this->where('event_date >=', $now)->orderBy('event.id', 'desc');
+            $query = $this->select('*,event.id as eid')->where('event_date >=', $now)->orderBy('event.id', 'desc');
         }
 
         //echo $query->countAllResults(); 
@@ -76,12 +76,12 @@ class Event_model extends Model
     {
         $now = date_format(new DateTime(), 'Y-m-d H:i:s');
         if (auth()->loggedIn()) {
-            $query = $this->select('*, (SELECT COUNT(*) 
+            $query = $this->select('*,event.id as eid, (SELECT COUNT(*) 
             FROM user_event WHERE event_id = id
             and user_id = ' . auth()->user()->id . ') as e_count')->where('event_date >=', $now)->where('created_by =', $uid)->orderBy('event.id', 'desc');
         } else {
 
-            $query = $this->where('event_date >=', $now)->where('created_by =', $uid)->orderBy('event.id', 'desc');
+            $query = $this->select('*,event.id as eid')->where('event_date >=', $now)->where('created_by =', $uid)->orderBy('event.id', 'desc');
         }
 
         //echo $query->countAllResults(); 
@@ -91,12 +91,12 @@ class Event_model extends Model
     {
         $now = date_format(new DateTime(), 'Y-m-d H:i:s');
         if (auth()->loggedIn()) {
-            $query = $this->select('*, (SELECT COUNT(*) 
+            $query = $this->select('*,event.id as eid, (SELECT COUNT(*) 
             FROM user_event WHERE event_id = id
             and user_id = ' . auth()->user()->id . ') as e_count')->where('event_date <', $now)->where('created_by =', $uid)->orderBy('event.id', 'desc');
         } else {
 
-            $query = $this->where('event_date <', $now)->where('created_by =', $uid)->orderBy('event.id', 'desc');
+            $query = $this->select('*,event.id as eid')->where('event_date <', $now)->where('created_by =', $uid)->orderBy('event.id', 'desc');
         }
 
         //echo $query->countAllResults(); 
