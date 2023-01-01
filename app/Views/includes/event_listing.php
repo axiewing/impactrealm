@@ -73,7 +73,8 @@
         ?>
 
             <div class="col-12 text-center">
-                <a href="<?php echo base_url(); ?>/all-events"><button class="m-0 p-0 btn btn-info ">See All Events</button></a>
+                <a href="<?php echo base_url(); ?>/all-events">
+                <button style="border: 1px solid white;" class=" p-1 bg-transparent text-white text-uppercase">More Events</button></a>
             </div>
         <?php
         }
