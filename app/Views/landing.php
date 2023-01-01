@@ -11,22 +11,20 @@ $landing_page = true;
 include('top.php');
 
 ?>
-    <div class="row align-items-center ">
-        <img class="landing_banner" src="img/gaming.webp" />
-        <h2 style="position: absolute;" class="ps-5 col-12">Discover, Create and Manage Web3 Gaming Events.</h2>
-    </div>
+<div class="row landing_banner" >
+    <h1 class="ps-5  text-uppercase">Discover, Create and Manage Web3 Gaming Events.</h1>
+    <a  class="mx-auto mt-auto" href="<?php echo base_url(); ?>/new-event">
+        <button  class="text-white bg-transparent  p-3">Create an Event</button>
+    </a>
+</div>
+
 <div class="container-fluid p-0">
-    <div class="row ">
-        <div class="text-center">
-            <a href="<?php echo base_url(); ?>/new-event"><button class="btn btn-primary m-4 p-3">Create an Event</button></a>
-        </div>
-    </div>
 
     <div class="row">
         <div class="foc">
             <?php
             $events_obj = (object)[
-                "title" => "Popular Events Among Gamers",
+                "title" => "Discover",
                 "events" => $events
             ];
 
@@ -34,9 +32,10 @@ include('top.php');
             ?> </div>
     </div>
     <?php
-    include('includes/divider.php');
+
     include('includes/how_section.php');
-    include('includes/divider.php');
+
+
 
     ?>
 </div>

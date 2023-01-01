@@ -41,7 +41,7 @@ if (auth()->loggedIn()) {
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -51,7 +51,7 @@ if (auth()->loggedIn()) {
     <link href="<?php echo base_url(); ?>/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="<?php echo base_url(); ?>/css/style.css?v=0.2" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>/css/style.css?v=0.3" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

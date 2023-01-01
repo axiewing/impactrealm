@@ -299,19 +299,45 @@
 }
 
 @media screen and (min-width: 600px) {
-    body{
-    overflow-x: hidden;
+    body {
+        overflow-x: hidden;
     }
+
     .logo_nav {
         height: 67px;
         width: 220px;
         object-fit: cover;
     }
 }
+.bpbg{
+    background-image: url(../img/event_back.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 .landing_banner {
     height: 60vh;
-    object-fit: cover;
+    background-image: url(../img/banner.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.landing_banner h1 {
+    position: absolute;
+    text-align: center;
+    top: 35vh;
+}
+.landing_banner button {
+    border: transparent;
+     line-height: 3;
+}
+.landing_banner a {
+    background-image: url(../img/halo_btn.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 240px;
+    text-align: center;
+    height: fit-content;
 }
 
 .minhi2 {
@@ -325,12 +351,14 @@
 .e-box {
     height: 100%;
 }
+
 .e-box h5 {
     -webkit-line-clamp: 3;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
 .e-box p {
     -webkit-line-clamp: 3;
     display: -webkit-box;
@@ -339,11 +367,15 @@
     word-wrap: break-word;
 }
 
-.foc{
+.foc {
     max-width: 1300px;
     margin: auto;
 }
 
-.bg-gray{
+.bg-gray {
     background-color: #191C24;
+}
+
+.icon_m {
+    width: 200px;
 }
