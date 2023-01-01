@@ -56,11 +56,11 @@
                                 if ($attend_btn)
                                     if ($event["e_count"] == "0") {
                         ?>
-                                <button id='attend<?php echo $event["eid"]; ?>' onclick='attend_event(<?php echo $event["eid"]; ?>,true)' class="btn btn-primary m-1 p-1">Attend</button>
+                                <button style="width: fit-content;" id='attend<?php echo $event["eid"]; ?>' onclick='attend_event(<?php echo $event["eid"]; ?>,true)' class="btn btn-primary m-1 p-1">Attend</button>
                             <?php
                                     } else {
                             ?>
-                                <button id='attend<?php echo $event["eid"]; ?>' onclick='unattend_event(<?php echo $event["eid"]; ?>,true)' class="btn btn-light m-1 p-1">Attending</button>
+                                <button style="width: fit-content;" id='attend<?php echo $event["eid"]; ?>' onclick='unattend_event(<?php echo $event["eid"]; ?>,true)' class="btn btn-light m-1 p-1">Attending</button>
                         <?php
                                     }
                             } ?>
