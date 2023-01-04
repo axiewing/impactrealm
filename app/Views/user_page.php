@@ -31,6 +31,7 @@ include('includes/event_listing.php');
 ?> </div>
 <?php
 $admin_list = $u_model->get_admin_list();
+    if(auth()->loggedIn())
     if (in_array(auth()->user()->id, $admin_list)) {
     ?>
 
