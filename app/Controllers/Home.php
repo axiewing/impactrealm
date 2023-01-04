@@ -49,10 +49,6 @@ class Home extends BaseController
     {
         return view('past_events');
     }
-    public function my_events()
-    {
-        return view('my_events');
-    }
     
     public function about()
     {

@@ -44,10 +44,20 @@
                         <p class="my-2"><?php echo $event["address"]; ?></p>
                         <?php if (isset($delete_btn)) {
                         ?>
-                        <div class="mt-auto">
-                            <a onclick="return confirm('You are about to Delete an Event!!!')" href="<?php echo base_url(); ?>/del-event/<?php echo $event["eid"]; ?>">
-                                <button class="btn btn-danger m-1 p-1">Delete</button>
-                            </a></div>
+                            <div class="mt-auto col-4">
+                                <a onclick="return confirm('You are about to Delete an Event!!!')" href="<?php echo base_url(); ?>/del-event/<?php echo $event["eid"]; ?>">
+                                    <button class="btn btn-danger m-1 p-1">Delete</button>
+                                </a>
+                            </div>
+                        <?php
+                        } ?>
+                        <?php if (isset($edit_btn)) {
+                        ?>
+                            <div class="mt-auto col-3">
+                                <a href="<?php echo base_url(); ?>/edit-event/<?php echo $event["eid"]; ?>">
+                                    <button class="btn btn-primary m-1 p-1">Edit</button>
+                                </a>
+                            </div>
                         <?php
                         } ?>
                         <?php
@@ -74,7 +84,7 @@
 
             <div class="col-12 text-center">
                 <a href="<?php echo base_url(); ?>/all-events">
-                <button style="border: 1px solid white;" class=" p-1 bg-transparent text-white text-uppercase">More Events</button></a>
+                    <button style="border: 1px solid white;" class=" p-1 bg-transparent text-white text-uppercase">More Events</button></a>
             </div>
         <?php
         }

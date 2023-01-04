@@ -81,13 +81,15 @@ if (auth()->loggedIn()) {
     $routes->get('/notifications', 'Notification::all');
     $routes->get('/upcoming-events', 'Home::upcoming_events');
     $routes->get('/past-events', 'Home::past_events');
-    $routes->get('/my-events', 'Home::my_events');
+    $routes->get('/my-events', 'Event::my_events');
+    $routes->post('/my-events', 'Event::my_events');
     $routes->get('/new-event', 'Event::new_event');
     $routes->get('/settings', 'Setting::settings');
     $routes->post('/settings', 'Setting::settings');
     $routes->post('/updateprofile', 'Setting::profile');
     $routes->post('/new-event', 'Event::new_event');
     $routes->get('/del-event/(:num)', 'Event::delete_event/$1');
+    $routes->get('/edit-event/(:num)', 'Event::edit_event/$1');
     $routes->get('/a-del-event/(:num)', 'Event::a_delete_event/$1');
     $routes->get('/seen/(:num)', 'Event::seen_notif/$1');
     $routes->get('/attend-event/(:num)', 'Event::attend_event/$1');

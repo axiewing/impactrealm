@@ -112,6 +112,20 @@ class Event_model extends Model
         $this->set('follow_count', 'follow_count - 1', false)->where('id', $id)->update();
     }
 
+
+
+    public function get_user_attended_events($id)
+    {
+        $query = $this->select('*,event.id as eid')
+            ->where('(SELECT COUNT(*) 
+            FROM user_event WHERE event_id = id
+            and user_id = ' . $id . ') >= 1')
+            ->orderBy('event.id', 'desc');
+
+        //echo $query->countAllResults(); 
+        return $query->findAll();
+    }
+
     public function get_attended_events()
     {
         $now = date_format(new DateTime(), 'Y-m-d H:i:s');

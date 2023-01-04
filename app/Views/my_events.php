@@ -21,6 +21,7 @@ include('top.php');
                 "events" => $events
             ];
             $delete_btn = true;
+            $edit_btn = true;
             include('includes/event_listing.php');
             ?> </div>
     </div>
