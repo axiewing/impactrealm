@@ -12,15 +12,15 @@ include('top.php');
 
 ?>
 <div class="row landing_banner" >
-    <h1 class="ps-5  text-uppercase">Discover, Create and Manage Web3 Gaming Events.</h1>
+    <h1 class="ps-5  text-uppercase spc2">Discover, Create and Manage Web3 Gaming Events.</h1>
     <a  class="mx-auto mt-auto" href="<?php echo base_url(); ?>/new-event">
         <button  class="text-white bg-transparent  p-3">Create an Event</button>
     </a>
 </div>
 
-<div class="container-fluid p-0">
+<div class="container-fluid p-0 ">
 
-    <div class="row">
+    <div class="row bpbg">
         <div class="foc">
             <?php
             $events_obj = (object)[

@@ -48,10 +48,10 @@ if (auth()->loggedIn()) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="<?php echo base_url(); ?>/css/bootstrap.min.css?v=0.3" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>/css/bootstrap.min.css?v=0.4" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="<?php echo base_url(); ?>/css/style.css?v=0.3" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>/css/style.css?v=0.4" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

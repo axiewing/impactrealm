@@ -1,9 +1,9 @@
 <!-- Widgets Start -->
 
-<div class="container-fluid pt-4 px-4 py-3 bpbg" <?php if (!isset($landing_page)) { ?> style="min-height:70vh ;" <?php } ?>>
+<div class="container-fluid pt-4 px-4 py-3 " <?php if (!isset($landing_page)) { ?> style="min-height:70vh ;" <?php } ?>>
     <div class="row g-4">
         <div class="col-12 text-center">
-            <h2 class="mb-0 text-uppercase"><?php echo $events_obj->title; ?></h2>
+            <h2 class="mb-0 text-uppercase spc2"><?php echo $events_obj->title; ?></h2>
         </div>
 
         <?php

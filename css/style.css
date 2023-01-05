@@ -161,6 +161,10 @@
     transition: .5s;
 }
 
+.spc2{
+    letter-spacing: 2px;
+}
+
 .sidebar .navbar .dropdown-toggle[aria-expanded=true]::after {
     transform: rotate(-180deg);
 }
@@ -364,7 +368,7 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    word-wrap: break-word;
+    word-break: break-all;
 }
 
 .foc {

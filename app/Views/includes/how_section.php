@@ -3,7 +3,7 @@ background-repeat: no-repeat;
 background-size: cover;" class="container-fluid p-0  ">
     <div class="row foc">
         <div class="col-12 text-center">
-            <h2 class="my-5 text-uppercase">earn </h2>
+            <h2 class="my-5 text-uppercase spc2">GET REWARDED </h2>
         </div>
 
         <div class="row py-1">
@@ -56,7 +56,7 @@ background-repeat: no-repeat;
 background-size: cover;" class="container-fluid py-4 ">
     <div class="row foc">
         <div class="col-12 text-center ">
-            <h1 class="text-uppercase">Create & Manage</h1>
+            <h1 class="text-uppercase spc2">Create & Manage</h1>
             <div class="col-10 m-auto" >
                 
         <img  src="img/desc.webp" style="width: inherit; border-radius: 21px;" />
