@@ -83,8 +83,8 @@
         ?>
 
             <div class="col-12 text-center">
-                <a href="<?php echo base_url(); ?>/all-events">
-                    <button style="border: 1px solid white;" class=" p-1 bg-transparent text-white text-uppercase">More Events</button></a>
+                <a class="ir-btn btn-lg" href="<?php echo base_url(); ?>/all-events">
+                    <button  class="  text-white text-uppercase">More Events</button></a>
             </div>
         <?php
         }

@@ -57,12 +57,12 @@
                     </div>
                 <?php endif; ?>
 
-                <div class="d-grid col-12 col-md-8 mx-auto m-3">
-                    <button type="submit" class="btn btn-primary btn-block"><?= lang('Auth.login') ?></button>
+                <div class="d-grid col-12 col-md-8 mx-auto m-3 ir-btn btn-lg " style="color:white;">
+                    <button type="submit"><?= lang('Auth.login') ?></button>
                 </div>
 
-                    <div class="d-grid col-12 col-md-8 mx-auto m-3">
-                        <a class="btn  btn-info " style="color:white;" href="<?php echo base_url(); ?>/oauth/google"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> <span>Signin Using Google</span></a>
+                    <div class="d-grid col-12 col-md-8 mx-auto m-3 ir-btn btn-lg " >
+                        <a style="color:white;" href="<?php echo base_url(); ?>/oauth/google"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> <span>Signin Using Google</span></a>
 
                     </div>
                 <?php if (setting('Auth.allowMagicLinkLogins')) : ?>

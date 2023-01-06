@@ -124,7 +124,7 @@ if (auth()->loggedIn()) {
                             <span class=" ">Join us on Discord</span>
                         </a>
 
-                        <a href="<?php echo base_url(); ?>/about"><button class="btn btn-primary rounded-pill m-3">About</button></a>
+                        <a class="ir-btn btn-smi" href="<?php echo base_url(); ?>/about"><button>About</button></a>
                     <?php
                     }
                     if (auth()->loggedIn()) { ?>
@@ -182,8 +182,8 @@ if (auth()->loggedIn()) {
                         
                     <?php } else {
                     ?>
-                        <a href="<?php echo base_url(); ?>/login"><button class="btn btn-primary rounded-pill m-3">Login</button></a>
-                        <a href="<?php echo base_url(); ?>/register"><button class="btn btn-primary rounded-pill m-3">Register</button></a>
+                        <a class="ir-btn btn-smi" href="<?php echo base_url(); ?>/login"><button >Login</button></a>
+                        <a class="ir-btn btn-smi" href="<?php echo base_url(); ?>/register"><button>Register</button></a>
 
                     <?php
                     }

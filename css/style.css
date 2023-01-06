@@ -161,6 +161,33 @@
     transition: .5s;
 }
 
+.btn-smi{
+    width: 115px;
+    height: 40px;
+    padding-top: 9px;
+}
+.btn-lg{
+    width: 240px;
+    height: 60px;
+    padding-top: 15px;
+}
+
+.ir-btn{
+    background-image: url(../img/halo_btn.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+.ir-btn button{
+    background: transparent;
+    text-align: center;
+    height: fit-content;
+    border: transparent;
+    color: white;
+    
+}
+
 .spc2{
     letter-spacing: 2px;
 }
