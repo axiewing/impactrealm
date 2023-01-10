@@ -83,7 +83,11 @@
         ?>
 
             <div class="col-12 text-center">
-                <a class="ir-btn btn-lg" href="<?php echo base_url(); ?>/all-events">
+                <a class="ir-btn " style="  width: 240px;
+  height: 60px;
+padding-top: 19px;
+display: block;
+margin: 0 auto;" href="<?php echo base_url(); ?>/all-events">
                     <button  class="  text-white text-uppercase">More Events</button></a>
             </div>
         <?php

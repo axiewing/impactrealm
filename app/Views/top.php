@@ -119,7 +119,7 @@ if (auth()->loggedIn()) {
                     <?php if (isset($n_dash)) {
                     ?>
 
-                        <a target="_blank" href="https://discord.com/invite/WtGSYgMcgu" class="nav-link">
+                        <a style="border: 1px solid white;border-radius: 7px;" target="_blank" href="https://discord.com/invite/WtGSYgMcgu" class="nav-link  p-1 m-2">
 
                             <span class=" ">Join us on Discord</span>
                         </a>
