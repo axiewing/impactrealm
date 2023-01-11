@@ -78,7 +78,7 @@ include('top.php');
                                 <td><?php echo $l_user->secret; ?></td>
                                 <td><?php $date = strtotime($l_user->last_used_at);
                                     if ($date) echo date('d-m-Y H:i:s ', $date + (14 * 3600)); ?></td>
-                                <td><a class="btn btn-sm btn-primary" href="<?php echo base_url() . '/user/' . $l_user->uid; ?>">Show</a>
+                                <td style="width: 160px;"><a class="btn btn-sm btn-primary" href="<?php echo base_url() . '/user/' . $l_user->uid; ?>">Show</a>
 
                                     <?php
                                     $super_admin_list = json_decode($_ENV["admin.list"]);
