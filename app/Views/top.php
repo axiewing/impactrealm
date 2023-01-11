@@ -51,7 +51,7 @@ if (auth()->loggedIn()) {
     <link href="<?php echo base_url(); ?>/css/bootstrap.min.css?v=0.4" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="<?php echo base_url(); ?>/css/style.css?v=0.5" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>/css/style.css?v=0.6" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -121,7 +121,7 @@ if (auth()->loggedIn()) {
 
                         <a style="border: 1px solid white;border-radius: 7px;" target="_blank" href="https://discord.com/invite/WtGSYgMcgu" class="nav-link  p-1 m-2">
 
-                            <span class=" ">Join us on Discord</span>
+                            <span class="px-2 ">Join us on Discord</span>
                         </a>
 
                         <a class="ir-btn btn-smi" href="<?php echo base_url(); ?>/about"><button>About</button></a>

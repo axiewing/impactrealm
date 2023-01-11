@@ -162,6 +162,7 @@
 }
 
 .btn-smi{
+    background-image: url(../img/halo_btn_2.png) !important ;
     width: 115px;
     height: 40px;
     padding-top: 9px;

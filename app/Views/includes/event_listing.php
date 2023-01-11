@@ -88,7 +88,7 @@
 padding-top: 19px;
 display: block;
 margin: 0 auto;" href="<?php echo base_url(); ?>/all-events">
-                    <button  class="  text-white text-uppercase">More Events</button></a>
+                    <button  class="  text-white ">More Events</button></a>
             </div>
         <?php
         }
